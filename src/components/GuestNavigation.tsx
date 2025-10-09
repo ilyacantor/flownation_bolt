@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { UserCircle2 } from 'lucide-react';
 import QuickSignupModal from './QuickSignupModal';
 
 export default function GuestNavigation() {
@@ -20,7 +21,6 @@ export default function GuestNavigation() {
           <Link to="/discover" className="text-white hover:text-cyan-400 transition-colors">Discover</Link>
           <Link to="/buddymatch" className="text-white hover:text-cyan-400 transition-colors">BuddyMatch</Link>
           <Link to="/paddock" className="text-white hover:text-cyan-400 transition-colors">The Paddock</Link>
-          <Link to="/profile" className="text-white hover:text-cyan-400 transition-colors">Profile</Link>
         </nav>
         <div className="flex items-center gap-4">
           <button className="px-4 py-2 bg-cyan-400 hover:bg-cyan-500 text-gray-900 rounded-lg font-semibold transition-colors" >
@@ -29,6 +29,9 @@ export default function GuestNavigation() {
           <button onClick={() => setShowSignup(true)} className="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-semibold transition-colors" >
             Get Started
           </button>
+          <Link to="/profile" className="text-white hover:text-cyan-400 transition-colors">
+            <UserCircle2 size={32} />
+          </Link>
         </div>
       </div>
       <QuickSignupModal open={showSignup} onClose={() => setShowSignup(false)} />
