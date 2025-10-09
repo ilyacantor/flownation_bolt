@@ -13,6 +13,8 @@ import BikeShopPage from './pages/BikeShopPage';
 import FlowHubPage from './pages/FlowHubPage';
 import SolutionsPage from './pages/SolutionsPage';
 import TeamFlowPage from './pages/TeamFlowPage';
+import CoachesCornerPage from './pages/CoachesCornerPage';
+import TeamDirectorPage from './pages/TeamDirectorPage';
 import { AuthProvider } from './context/AuthContext';
 import FlowbieIcon from './components/FlowbieIcon';
 
@@ -38,6 +40,8 @@ function App() {
           <Route path="/bikeshop" element={<BikeShopPage />} />
           <Route path="/solutions" element={<SolutionsPage />} />
           <Route path="/teamflow" element={<TeamFlowPage />} />
+          <Route path="/coaches-corner" element={<CoachesCornerPage />} />
+          <Route path="/team-director" element={<TeamDirectorPage />} />
         </Routes>
         <FlowbieIcon />
       </AuthProvider>

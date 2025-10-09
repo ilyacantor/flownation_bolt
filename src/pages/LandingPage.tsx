@@ -77,9 +77,9 @@ export default function LandingPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto px-8">
           {[
-            { label: "I'm an athlete", icon: User, path: '/landing' },
-            { label: "I'm a coach", icon: Shield, path: '/landing' },
-            { label: 'I run a team', icon: Users, path: '/landing' },
+            { label: "I'm an athlete", icon: User, path: '/flowhub' },
+            { label: "I'm a coach", icon: Shield, path: '/coaches-corner' },
+            { label: 'I run a team', icon: Users, path: '/team-director' },
             { label: "I'm your LBS", icon: Store, path: '/landing' }
           ].map((item, i) => {
             const Icon = item.icon;
