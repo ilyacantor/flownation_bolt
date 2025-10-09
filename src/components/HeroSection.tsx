@@ -6,16 +6,11 @@ export default function HeroSection() {
 
   return (
     <section className="relative h-screen overflow-hidden bg-black">
-      <video
+      <img
+        src="/Peloton_of_road_cyclists_on_winding_mountain_road__drone_following_overhead__motion_blur__clear_blue.png"
+        alt="Cyclists on mountain road"
         className="absolute inset-0 w-full h-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-      >
-        <source src="https://res.cloudinary.com/dmblbmbsk/video/upload/v1760036313/hero_master_k4u2ho.mp4" type="video/mp4" />
-      </video>
+      />
 
       <div className="absolute inset-0 bg-black/25 z-10" />
 

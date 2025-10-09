@@ -13,15 +13,11 @@ export default function LandingPage() {
       <GuestNavigation />
       {/* Hero Section */}
       <div className="relative h-screen w-full overflow-hidden">
-        <video
+        <img
+          src="/Peloton_of_road_cyclists_on_winding_mountain_road__drone_following_overhead__motion_blur__clear_blue.png"
+          alt="Cyclists on mountain road"
           className="absolute top-0 left-0 w-full h-full object-cover"
-          autoPlay
-          loop
-          muted
-          playsInline
-        >
-          <source src="/assets/videos/hero_master.mp4" type="video/mp4" />
-        </video>
+        />
 
         <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-center px-4">
           <div className="border border-white/10 rounded-2xl p-8 backdrop-blur-sm bg-white/5">
