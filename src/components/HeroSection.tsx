@@ -14,17 +14,17 @@ export default function HeroSection() {
 
       <div className="absolute inset-0 bg-black/25 z-10" />
 
-      <div className="relative z-20 flex flex-col items-center justify-center h-full px-6 text-center pt-32">
-        <div className="bg-black/20 backdrop-blur-sm rounded-3xl px-12 py-10 border border-white/10 max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 text-center">
+      <div className="relative z-20 flex items-center justify-center h-full px-6 pt-32">
+        <div className="bg-black/20 backdrop-blur-sm rounded-3xl px-12 py-8 border border-white/10 w-fit">
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-3 text-center">
             Welcome Home
           </h1>
 
-          <p className="text-3xl md:text-4xl text-blue-400 mb-8 font-semibold text-center">
+          <p className="text-3xl md:text-4xl text-blue-400 mb-6 font-semibold text-center">
             We Think You Will Like it Here
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 mb-6 justify-center">
+          <div className="flex justify-center mb-5">
             <button
               onClick={() => setShowSignup(true)}
               className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-cyan-600 transition-all transform hover:scale-105 shadow-lg"
