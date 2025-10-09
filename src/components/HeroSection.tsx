@@ -14,7 +14,7 @@ export default function HeroSection() {
         playsInline
         preload="auto"
       >
-        <source src="https://res.cloudinary.com/dmblbmbsk/video/upload/q_100/hero_master_k4u2ho.mp4" type="video/mp4" />
+        <source src="https://res.cloudinary.com/dmblbmbsk/video/upload/v1760036313/hero_master_k4u2ho.mp4" type="video/mp4" />
       </video>
 
       <div className="absolute inset-0 bg-black/25 z-10" />

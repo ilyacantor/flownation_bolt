@@ -18,7 +18,6 @@ export default function RegisteredNavigation() {
           <Link to="/discover" className="text-white hover:text-cyan-400 transition-colors">Discover</Link>
           <Link to="/buddymatch" className="text-white hover:text-cyan-400 transition-colors">BuddyMatch</Link>
           <Link to="/paddock" className="text-white hover:text-cyan-400 transition-colors">The Paddock</Link>
-          <Link to="/bikeshop" className="text-white hover:text-cyan-400 transition-colors">Support your LBS!</Link>
           <Link to="/profile" className="text-white hover:text-cyan-400 transition-colors">Profile</Link>
         </nav>
         <div className="flex items-center gap-4">
