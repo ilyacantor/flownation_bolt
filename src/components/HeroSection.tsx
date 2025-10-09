@@ -15,12 +15,12 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-black/25 z-10" />
 
       <div className="relative z-20 flex flex-col items-center justify-center h-full px-6 text-center pt-32">
-        <div className="bg-black/20 backdrop-blur-sm rounded-3xl px-12 py-10 border border-white/10">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
+        <div className="bg-black/20 backdrop-blur-sm rounded-3xl px-12 py-10 border border-white/10 max-w-4xl mx-auto">
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 text-center">
             Welcome Home
           </h1>
 
-          <p className="text-3xl md:text-4xl text-blue-400 mb-8 max-w-3xl font-semibold">
+          <p className="text-3xl md:text-4xl text-blue-400 mb-8 font-semibold text-center">
             We Think You Will Like it Here
           </p>
 
@@ -33,7 +33,7 @@ export default function HeroSection() {
             </button>
           </div>
 
-          <p className="text-lg md:text-xl text-gray-200 max-w-2xl">
+          <p className="text-lg md:text-xl text-gray-200 text-center">
             No fees. No subscriptions. No annoying pop-up ads. Just connections.
           </p>
         </div>
