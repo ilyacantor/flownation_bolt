@@ -5,7 +5,6 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import HeroSection from '../components/HeroSection';
 import TeaserCard from '../components/TeaserCard';
-import FloatingFlowbie from '../components/FloatingFlowbie';
 import { User, Users, Shield, Store, TrendingUp } from 'lucide-react';
 import { mockRiders } from '../data/mockRiders.js';
 
@@ -79,8 +78,6 @@ export default function LandingPage() {
       {/* Modal */}
       <QuickSignupModal open={showSignup} onClose={() => setShowSignup(false)} />
 
-      {/* Floating Flowbie */}
-      <FloatingFlowbie />
     </div>
   );
 }
