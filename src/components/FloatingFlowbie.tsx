@@ -32,13 +32,13 @@ export default function FloatingFlowbie() {
       question: null,
       speech: "Discover is where your next adventure starts. It's how you find new races, epic routes, and the people who make them worth doing. Whether it's a local ride or a bucket-list event, Discover keeps you exploring, not scrolling.",
       nextQuestion: "Let's keep going!",
-      route: "/events"
+      route: "/discover"
     },
     {
       question: null,
       speech: "BuddyFinder is where tech meets vibe. One click and the algorithm finds your pace, your vibe, your crew. It's ride-matching for all of us — no awkward meetups, just instant chemistry on two wheels.",
       nextQuestion: "Finish Tour",
-      route: "/community"
+      route: "/buddymatch"
     }
   ];
 
