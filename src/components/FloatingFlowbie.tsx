@@ -5,6 +5,7 @@ import flowbieImg from "./flowbie.png";
 export default function FloatingFlowbie() {
   const navigate = useNavigate();
   const location = useLocation();
+  const [showInitialGreeting, setShowInitialGreeting] = useState(false);
   const [showQuestion, setShowQuestion] = useState(false);
   const [showSpeech, setShowSpeech] = useState(false);
   const [tourStep, setTourStep] = useState(0);
@@ -13,6 +14,7 @@ export default function FloatingFlowbie() {
   const [tourActive, setTourActive] = useState(false);
   const [showBubble, setShowBubble] = useState(false);
   const [bubbleText, setBubbleText] = useState("");
+  const [isIdle, setIsIdle] = useState(true);
 
   const tourSteps = [
     {
@@ -55,15 +57,18 @@ export default function FloatingFlowbie() {
   useEffect(() => {
     const savedStep = localStorage.getItem('flowbieTourStep');
     const savedTourActive = localStorage.getItem('flowbieTourActive');
+    const introDone = localStorage.getItem('flowbie_intro_done');
 
     if (savedTourActive === 'true' && savedStep) {
       setTourStep(parseInt(savedStep));
       setTourActive(true);
       setIsMinimized(true);
-    } else if (!dismissed) {
+      setIsIdle(false);
+    } else if (introDone !== 'true' && !dismissed && location.pathname === '/') {
       const timer = setTimeout(() => {
-        setShowQuestion(true);
-      }, 1500);
+        setShowInitialGreeting(true);
+        setIsIdle(false);
+      }, 2000);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -77,16 +82,49 @@ export default function FloatingFlowbie() {
     }
   }, [location.pathname, tourActive, isMinimized, tourStep]);
 
+  const handleInitialYes = () => {
+    setShowInitialGreeting(false);
+    setBubbleText("Awesome — let's roll!");
+    setShowBubble(true);
+    setIsIdle(false);
+    localStorage.setItem('flowbie_intro_done', 'true');
+
+    setTimeout(() => {
+      setShowBubble(false);
+      setTourActive(true);
+      setIsMinimized(true);
+      localStorage.setItem('flowbieTourActive', 'true');
+      localStorage.setItem('flowbieTourStep', '1');
+      navigate('/paddock');
+      setTourStep(1);
+    }, 1500);
+  };
+
+  const handleInitialNo = () => {
+    setShowInitialGreeting(false);
+    setBubbleText("Cool, I'll hang here if you need me.");
+    setShowBubble(true);
+    setIsIdle(true);
+    localStorage.setItem('flowbie_intro_done', 'true');
+
+    setTimeout(() => {
+      setShowBubble(false);
+      setIsMinimized(true);
+    }, 2000);
+  };
+
   const handleYesClick = () => {
     setShowQuestion(false);
     setShowSpeech(true);
     setTourActive(true);
+    setIsIdle(false);
     localStorage.setItem('flowbieTourActive', 'true');
   };
 
   const handleNoClick = () => {
     setShowQuestion(false);
     setDismissed(true);
+    setIsIdle(true);
     localStorage.removeItem('flowbieTourActive');
     localStorage.removeItem('flowbieTourStep');
   };
@@ -156,38 +194,57 @@ export default function FloatingFlowbie() {
 
   return (
     <>
-      {!showQuestion && !showSpeech && isMinimized && (
-        <>
-          <div className="fixed bottom-8 right-8 z-50 animate-float">
-            <img
-              src={flowbieImg}
-              alt="Flowbie"
-              className="w-20 h-20 drop-shadow-2xl cursor-pointer hover:scale-110 transition-transform"
-              onClick={handleMinimizedClick}
-            />
-          </div>
-          {showBubble && (
-            <div className="fixed bottom-32 right-8 z-50 animate-slideIn">
-              <div className="bg-white rounded-2xl shadow-2xl px-6 py-3 border-2 border-cyan-400 relative">
-                <div className="absolute -bottom-3 right-8 w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-t-[15px] border-t-white"></div>
-                <div className="absolute -bottom-4 right-8 w-0 h-0 border-l-[17px] border-l-transparent border-r-[17px] border-r-transparent border-t-[17px] border-t-cyan-400"></div>
-                <p className="text-gray-900 font-bold text-lg whitespace-nowrap">
-                  {bubbleText}
-                </p>
-              </div>
-            </div>
-          )}
-        </>
-      )}
+      <div className="fixed bottom-8 right-8 z-50">
+        <div className={`relative ${isIdle ? 'animate-breathe' : 'animate-pulse-glow'}`}>
+          <div className={`absolute inset-0 rounded-full blur-xl ${isIdle ? 'bg-cyan-400/30' : 'bg-orange-500/40'} animate-pulse`}></div>
+          <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-orange-500/20 rounded-full blur-md"></div>
 
-      {!showQuestion && !showSpeech && !isMinimized && !dismissed && !tourActive && (
-        <div className="fixed bottom-8 right-8 z-50 animate-float">
           <img
             src={flowbieImg}
             alt="Flowbie"
-            className="w-20 h-20 drop-shadow-2xl cursor-pointer hover:scale-110 transition-transform"
-            onClick={() => setShowQuestion(true)}
+            className={`relative w-24 h-24 drop-shadow-2xl cursor-pointer transition-all duration-300 ${
+              !isMinimized ? 'hover:scale-110' : 'hover:scale-105'
+            }`}
+            onClick={isMinimized ? handleMinimizedClick : () => setShowQuestion(true)}
           />
+        </div>
+      </div>
+
+      {showBubble && (
+        <div className="fixed bottom-36 right-8 z-50 animate-slideIn">
+          <div className="backdrop-blur-md bg-gradient-to-br from-gray-900/90 to-black/90 rounded-2xl shadow-2xl px-6 py-3 border border-cyan-400/50 relative">
+            <div className="absolute -bottom-2 right-12 w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-t-[12px] border-t-gray-900/90"></div>
+            <p className="text-white font-semibold text-base whitespace-nowrap">
+              {bubbleText}
+            </p>
+          </div>
+        </div>
+      )}
+
+      {showInitialGreeting && (
+        <div className="fixed bottom-36 right-8 z-50 animate-slideIn">
+          <div className="backdrop-blur-xl bg-gradient-to-br from-gray-900/95 to-black/95 rounded-2xl shadow-2xl p-6 max-w-sm border border-cyan-400/50 relative">
+            <div className="absolute -bottom-3 right-12 w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-t-[15px] border-t-gray-900/95"></div>
+
+            <p className="text-white text-lg font-medium mb-4 leading-relaxed">
+              Hey, I'm Flowbie. Can I show you around?
+            </p>
+
+            <div className="flex gap-3">
+              <button
+                onClick={handleInitialYes}
+                className="flex-1 bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-400 hover:to-cyan-500 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-cyan-500/50"
+              >
+                Yes
+              </button>
+              <button
+                onClick={handleInitialNo}
+                className="flex-1 bg-gray-700 hover:bg-gray-600 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-200"
+              >
+                No
+              </button>
+            </div>
+          </div>
         </div>
       )}
 
