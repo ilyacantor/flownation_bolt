@@ -202,7 +202,7 @@ export default function FloatingFlowbie() {
           <img
             src={flowbieImg}
             alt="Flowbie"
-            className={`relative w-24 h-24 drop-shadow-2xl cursor-pointer transition-all duration-300 ${
+            className={`relative w-24 h-24 rounded-full object-cover drop-shadow-2xl cursor-pointer transition-all duration-300 ${
               !isMinimized ? 'hover:scale-110' : 'hover:scale-105'
             }`}
             onClick={isMinimized ? handleMinimizedClick : () => setShowQuestion(true)}
