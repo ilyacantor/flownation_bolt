@@ -95,7 +95,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="absolute right-8 top-1/2 -translate-y-1/2 w-96 flex flex-col gap-4">
+        <div className="absolute right-12 top-1/2 -translate-y-1/2 w-80 flex flex-col gap-4">
           <TeaserCard
             icon={<UserPlus size={32} />}
             title="Find Your Ride Buddies"
