@@ -20,7 +20,7 @@ import TeamLandingPage from './pages/TeamLandingPage';
 import LBSLandingPage from './pages/LBSLandingPage';
 import ToolsPage from './pages/ToolsPage';
 import { AuthProvider } from './context/AuthContext';
-import FloatingFlowbie from './components/FloatingFlowbie';
+import FlowbieIcon from './components/FlowbieIcon';
 
 function App() {
   return (
@@ -51,7 +51,7 @@ function App() {
           <Route path="/lbs-landing" element={<LBSLandingPage />} />
           <Route path="/about/tools" element={<ToolsPage />} />
         </Routes>
-        <FloatingFlowbie />
+        <FlowbieIcon />
       </AuthProvider>
     </BrowserRouter>
   );
