@@ -4,10 +4,11 @@ import Footer from '../components/Footer';
 import YourNextRide from '../components/paddock/YourNextRide';
 import MatchesCarousel from '../components/paddock/MatchesCarousel';
 import ActiveMatches from '../components/paddock/ActiveMatches';
-import EventFlow from '../components/paddock/EventFlow';
 import FlowBuzz from '../components/paddock/FlowBuzz';
-import { MapPin, Clock, ExternalLink, Search, X } from 'lucide-react';
+import { MapPin, Clock, ExternalLink, Search, X, Calendar } from 'lucide-react';
 import { bikeShops, commonSearchTerms, BikeShop } from '../data/bikeShops';
+import { groupRides } from '../mock/paddock_rides';
+import { headlineEvents } from '../mock/paddock_events';
 
 export default function PaddockPage() {
   const [showLBS, setShowLBS] = useState(false);
@@ -76,31 +77,92 @@ export default function PaddockPage() {
           <p className="text-gray-400 text-lg">What's happening in my community right now?</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
-          <div className="lg:col-span-3">
-            <YourNextRide />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+          <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+            <h2 className="text-white text-2xl font-bold mb-4">Your Next Ride</h2>
+            <div className="space-y-4">
+              {groupRides.map((ride) => (
+                <div key={ride.id} className="bg-gray-800/50 rounded-xl p-4 border border-gray-700 hover:border-cyan-400/50 transition-all">
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="text-white font-semibold">{ride.name}</h3>
+                    <span className={`px-2 py-1 rounded text-xs font-bold ${
+                      ride.tier === 'A' ? 'bg-red-500/20 text-red-400' :
+                      ride.tier === 'B' ? 'bg-orange-500/20 text-orange-400' :
+                      'bg-green-500/20 text-green-400'
+                    }`}>{ride.tier}</span>
+                  </div>
+                  <p className="text-gray-400 text-sm mb-3">{ride.description}</p>
+                  <div className="flex items-center gap-4 text-sm text-gray-400">
+                    <span>{ride.time}</span>
+                    <span>{ride.distance}</span>
+                    <span>{ride.participants} riders</span>
+                  </div>
+                  <button className="mt-3 w-full bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 px-4 py-2 rounded-lg transition-colors text-sm font-medium border border-cyan-400/30">
+                    Join Ride
+                  </button>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="lg:col-span-3">
-            <ActiveMatches />
+          <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+            <h2 className="text-white text-2xl font-bold mb-4">The Local Scene</h2>
+            <div className="mb-6">
+              <h3 className="text-white font-semibold mb-3">Active Matches</h3>
+              <ActiveMatches />
+            </div>
+            <div>
+              <h3 className="text-white font-semibold mb-3">Community Buzz</h3>
+              <FlowBuzz />
+            </div>
           </div>
 
-          <div className="lg:col-span-3">
-            <MatchesCarousel />
-          </div>
-
-          <div className="lg:col-span-3">
-            <EventFlow />
+          <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+            <h2 className="text-white text-2xl font-bold mb-4">Your Race Calendar</h2>
+            <div className="space-y-4">
+              {headlineEvents.map((event) => (
+                <div key={event.id} className="bg-gray-800/50 rounded-xl p-4 border border-gray-700 hover:border-orange-400/50 transition-all">
+                  <div className="flex items-start gap-3 mb-3">
+                    <div className="bg-orange-500/20 rounded-lg p-2">
+                      <Calendar className="text-orange-400" size={24} />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-white font-semibold mb-1">{event.name}</h3>
+                      <p className="text-gray-400 text-sm">{event.location}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-gray-400 text-xs">Race Day</p>
+                      <p className="text-white text-sm font-medium">{event.date}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-orange-400 text-lg font-bold">{event.countdown}</p>
+                      <p className="text-gray-400 text-xs">to go</p>
+                    </div>
+                  </div>
+                  <button className="mt-3 w-full bg-orange-500/10 hover:bg-orange-500/20 text-orange-400 px-4 py-2 rounded-lg transition-colors text-sm font-medium border border-orange-400/30">
+                    View Details
+                  </button>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="mb-6">
-          <button
-            onClick={() => setShowLBS(!showLBS)}
-            className="w-full bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-4 rounded-lg transition-colors font-medium text-lg"
-          >
-            {showLBS ? 'Hide' : 'Support Your Local Bike Shop'}
-          </button>
+        <div className="mb-6 bg-gradient-to-r from-cyan-900/30 to-blue-900/30 backdrop-blur-sm rounded-2xl p-6 border border-cyan-500/30">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-white text-2xl font-bold mb-2">Support Your Local Bike Shop</h2>
+              <p className="text-gray-300">Find gear and connect with shops in your community</p>
+            </div>
+            <button
+              onClick={() => setShowLBS(!showLBS)}
+              className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg transition-colors font-medium"
+            >
+              {showLBS ? 'Close' : 'Search Shops'}
+            </button>
+          </div>
         </div>
 
         {showLBS && (
@@ -282,9 +344,6 @@ export default function PaddockPage() {
           </div>
         )}
 
-        <div className="w-full">
-          <FlowBuzz />
-        </div>
       </div>
 
       <Footer />

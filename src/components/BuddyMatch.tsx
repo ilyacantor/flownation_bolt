@@ -2,7 +2,8 @@ import { useState } from "react";
 import { mockRiders, demoUser } from "../data/mockRiders";
 import { getActiveMatches, getPassiveMatches } from "../utils/BuddyMatchEngine";
 import RideBuddyCard from "./home/RideBuddyCard";
-import { Search, MapPin, Mountain, Target } from "lucide-react";
+import SwipeableCard from "./SwipeableCard";
+import { Search, MapPin, Mountain, Target, Grid, Layers } from "lucide-react";
 
 interface BuddyMatchProps {
   userId?: string;
@@ -11,6 +12,7 @@ interface BuddyMatchProps {
 export default function BuddyMatch({ userId }: BuddyMatchProps) {
   const user = userId ? mockRiders.find(r => r.id === userId) || demoUser : demoUser;
   const [tab, setTab] = useState("active");
+  const [viewMode, setViewMode] = useState<"swipe" | "grid">("swipe");
   const [visibleCount, setVisibleCount] = useState(50);
   const [searchQuery, setSearchQuery] = useState("");
   const [locationFilter, setLocationFilter] = useState("");
@@ -33,6 +35,10 @@ export default function BuddyMatch({ userId }: BuddyMatchProps) {
 
   const loadMore = () => {
     setVisibleCount(prev => prev + 50);
+  };
+
+  const handleSwipe = (direction: string, rider: any) => {
+    console.log(`Swiped ${direction} on ${rider.name}`);
   };
 
   return (
@@ -99,7 +105,6 @@ export default function BuddyMatch({ userId }: BuddyMatchProps) {
                 : "bg-gray-800 hover:bg-gray-700 text-gray-300"
             }`}
             onClick={() => handleTabChange("active")}
-
           >
             Active Search ({getActiveMatches(user).length})
           </button>
@@ -110,23 +115,50 @@ export default function BuddyMatch({ userId }: BuddyMatchProps) {
                 : "bg-gray-800 hover:bg-gray-700 text-gray-300"
             }`}
             onClick={() => handleTabChange("passive")}
-
           >
             All Matches ({getPassiveMatches(user).length})
+          </button>
+        </div>
+        <div className="flex gap-2">
+          <button
+            className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${
+              viewMode === "swipe"
+                ? "bg-orange-600 hover:bg-orange-500 text-white"
+                : "bg-gray-800 hover:bg-gray-700 text-gray-300"
+            }`}
+            onClick={() => setViewMode("swipe")}
+          >
+            <Layers size={18} />
+            Swipe Mode
+          </button>
+          <button
+            className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${
+              viewMode === "grid"
+                ? "bg-orange-600 hover:bg-orange-500 text-white"
+                : "bg-gray-800 hover:bg-gray-700 text-gray-300"
+            }`}
+            onClick={() => setViewMode("grid")}
+          >
+            <Grid size={18} />
+            Grid View
           </button>
         </div>
       </div>
 
       {filteredMatches.length === 0 ? (
         <div className="text-center py-16">
-          <p className="text-gray-400 text-lg" >
+          <p className="text-gray-400 text-lg">
             No matches found. Try adjusting your preferences or check back later!
           </p>
+        </div>
+      ) : viewMode === "swipe" ? (
+        <div className="py-8">
+          <SwipeableCard riders={filteredMatches} onSwipe={handleSwipe} />
         </div>
       ) : (
         <>
           <div className="mb-6">
-            <p className="text-gray-400 text-sm" >
+            <p className="text-gray-400 text-sm">
               Showing {Math.min(visibleCount, filteredMatches.length)} of {filteredMatches.length} matches
             </p>
           </div>
@@ -139,7 +171,7 @@ export default function BuddyMatch({ userId }: BuddyMatchProps) {
                 }`}
               >
                 {r.matchScore >= 90 && (
-                  <div className="absolute -top-2 -right-2 bg-cyan-500 text-white text-xs px-3 py-1 rounded-full font-bold z-10" >
+                  <div className="absolute -top-2 -right-2 bg-cyan-500 text-white text-xs px-3 py-1 rounded-full font-bold z-10">
                     Best Match
                   </div>
                 )}
@@ -159,7 +191,6 @@ export default function BuddyMatch({ userId }: BuddyMatchProps) {
               <button
                 onClick={loadMore}
                 className="px-8 py-3 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg font-semibold transition-all"
-
               >
                 Load More ({Math.min(50, filteredMatches.length - visibleCount)} more)
               </button>

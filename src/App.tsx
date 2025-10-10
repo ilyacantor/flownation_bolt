@@ -15,6 +15,10 @@ import SolutionsPage from './pages/SolutionsPage';
 import TeamFlowPage from './pages/TeamFlowPage';
 import CoachesCornerPage from './pages/CoachesCornerPage';
 import TeamDirectorPage from './pages/TeamDirectorPage';
+import CoachLandingPage from './pages/CoachLandingPage';
+import TeamLandingPage from './pages/TeamLandingPage';
+import LBSLandingPage from './pages/LBSLandingPage';
+import ToolsPage from './pages/ToolsPage';
 import { AuthProvider } from './context/AuthContext';
 import FlowbieIcon from './components/FlowbieIcon';
 
@@ -42,6 +46,10 @@ function App() {
           <Route path="/teamflow" element={<TeamFlowPage />} />
           <Route path="/coaches-corner" element={<CoachesCornerPage />} />
           <Route path="/team-director" element={<TeamDirectorPage />} />
+          <Route path="/coach-landing" element={<CoachLandingPage />} />
+          <Route path="/team-landing" element={<TeamLandingPage />} />
+          <Route path="/lbs-landing" element={<LBSLandingPage />} />
+          <Route path="/about/tools" element={<ToolsPage />} />
         </Routes>
         <FlowbieIcon />
       </AuthProvider>

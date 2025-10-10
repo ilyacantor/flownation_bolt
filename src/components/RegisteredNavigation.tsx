@@ -12,12 +12,10 @@ export default function RegisteredNavigation() {
           </span>
         </Link>
         <nav className="flex items-center gap-8 text-sm flex-1 justify-center" >
-          <Link to="/landing" className="text-white hover:text-cyan-400 transition-colors">Home</Link>
-          <Link to="/solutions" className="text-white hover:text-cyan-400 transition-colors">Solutions</Link>
-          <Link to="/flowhub" className="text-white hover:text-cyan-400 transition-colors">FlowHub</Link>
-          <Link to="/discover" className="text-white hover:text-cyan-400 transition-colors">Discover</Link>
-          <Link to="/buddymatch" className="text-white hover:text-cyan-400 transition-colors">BuddyMatch</Link>
           <Link to="/paddock" className="text-white hover:text-cyan-400 transition-colors">The Paddock</Link>
+          <Link to="/flowhub" className="text-white hover:text-cyan-400 transition-colors">FlowHub</Link>
+          <Link to="/discover" className="text-white hover:text-cyan-400 transition-colors">Discover Events</Link>
+          <Link to="/buddymatch" className="text-white hover:text-cyan-400 transition-colors">Buddy Finder</Link>
         </nav>
         <div className="flex items-center gap-4">
           <Link to="/profile" className="w-10 h-10 bg-gray-900 hover:bg-gray-800 rounded-lg flex items-center justify-center text-white transition-colors">
