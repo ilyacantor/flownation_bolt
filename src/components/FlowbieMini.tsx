@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import FlowbieBot from './FlowbieBot';
 
 const flowbieGif = "/assets/u7393982445_A_small_cute_futuristic_robot_mascot_standing_on__f96e5bda-f9bb-4256-98bc-3cfa5ec07533_2.gif";
 
@@ -9,6 +10,7 @@ export default function FlowbieMini() {
   const [showBubble, setShowBubble] = useState(false);
   const [bubbleMessage, setBubbleMessage] = useState("Can I show you around?");
   const [showButtons, setShowButtons] = useState(true);
+  const [showChat, setShowChat] = useState(false);
 
   useEffect(() => {
     let clickTimeout: NodeJS.Timeout;
@@ -40,11 +42,14 @@ export default function FlowbieMini() {
     e.stopPropagation();
     const introDone = localStorage.getItem('flowbie_intro_done');
 
+    setAnimationState('click');
+
     if (!introDone) {
-      setAnimationState('click');
       setShowBubble(true);
       setBubbleMessage("Can I show you around?");
       setShowButtons(true);
+    } else {
+      setShowChat(true);
     }
   };
 
@@ -86,14 +91,16 @@ export default function FlowbieMini() {
       aria-label="Flowbie Assistant"
     >
       <div className="relative w-32 h-32 cursor-pointer">
-        <img
-          src={flowbieGif}
-          alt="Flowbie"
-          className={`w-full h-full object-contain transition-all duration-300 ease-in-out ${getTransformClass()}`}
-        />
+        <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-cyan-500/20 to-orange-500/20 backdrop-blur-sm border-2 border-white/20 shadow-lg">
+          <img
+            src={flowbieGif}
+            alt="Flowbie"
+            className={`w-full h-full object-cover transition-all duration-300 ease-in-out ${getTransformClass()}`}
+          />
+        </div>
 
         {showBubble && (
-          <div className="absolute bottom-full right-0 mb-3 transition-opacity duration-250 ease-in-out">
+          <div className="absolute bottom-full right-0 mb-3 transition-opacity duration-250 ease-in-out opacity-100 animate-fadeIn">
             <div
               className="bg-white/8 backdrop-blur-[10px] border border-white/15 rounded-xl px-4 py-3 shadow-lg"
               style={{ backdropFilter: 'blur(10px)' }}
@@ -128,6 +135,8 @@ export default function FlowbieMini() {
           </div>
         )}
       </div>
+
+      {showChat && <FlowbieBot onClose={() => setShowChat(false)} />}
     </div>
   );
 }
