@@ -1,42 +1,38 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+const flowbieGif = "/assets/u7393982445_A_small_cute_futuristic_robot_mascot_standing_on__f96e5bda-f9bb-4256-98bc-3cfa5ec07533_2.gif";
 
 export default function FlowbieMini() {
   const navigate = useNavigate();
-  const [currentVideo, setCurrentVideo] = useState<'idle' | 'hover' | 'click'>('idle');
+  const [animationState, setAnimationState] = useState<'idle' | 'hover' | 'click'>('idle');
   const [showBubble, setShowBubble] = useState(false);
   const [bubbleMessage, setBubbleMessage] = useState("Can I show you around?");
-  const [isHovering, setIsHovering] = useState(false);
   const [showButtons, setShowButtons] = useState(true);
 
-  const idleRef = useRef<HTMLVideoElement>(null);
-  const hoverRef = useRef<HTMLVideoElement>(null);
-  const clickRef = useRef<HTMLVideoElement>(null);
-
   useEffect(() => {
-    if (idleRef.current) {
-      idleRef.current.play();
+    let clickTimeout: NodeJS.Timeout;
+
+    if (animationState === 'click') {
+      clickTimeout = setTimeout(() => {
+        setAnimationState('idle');
+      }, 600);
     }
-  }, []);
+
+    return () => {
+      if (clickTimeout) clearTimeout(clickTimeout);
+    };
+  }, [animationState]);
 
   const handleMouseEnter = () => {
-    if (currentVideo === 'idle' && !showBubble) {
-      setIsHovering(true);
-      setCurrentVideo('hover');
-      if (hoverRef.current) {
-        hoverRef.current.currentTime = 0;
-        hoverRef.current.play();
-      }
+    if (animationState === 'idle' && !showBubble) {
+      setAnimationState('hover');
     }
   };
 
   const handleMouseLeave = () => {
-    if (currentVideo === 'hover' && !showBubble) {
-      setIsHovering(false);
-      setCurrentVideo('idle');
-      if (idleRef.current) {
-        idleRef.current.play();
-      }
+    if (animationState === 'hover' && !showBubble) {
+      setAnimationState('idle');
     }
   };
 
@@ -45,22 +41,10 @@ export default function FlowbieMini() {
     const introDone = localStorage.getItem('flowbie_intro_done');
 
     if (!introDone) {
-      setIsHovering(false);
-      setCurrentVideo('click');
-      if (clickRef.current) {
-        clickRef.current.currentTime = 0;
-        clickRef.current.play();
-      }
+      setAnimationState('click');
       setShowBubble(true);
       setBubbleMessage("Can I show you around?");
       setShowButtons(true);
-    }
-  };
-
-  const handleClickEnd = () => {
-    setCurrentVideo('idle');
-    if (idleRef.current) {
-      idleRef.current.play();
     }
   };
 
@@ -78,9 +62,17 @@ export default function FlowbieMini() {
   const handleNo = () => {
     localStorage.setItem('flowbie_intro_done', 'true');
     setShowBubble(false);
-    setCurrentVideo('idle');
-    if (idleRef.current) {
-      idleRef.current.play();
+    setAnimationState('idle');
+  };
+
+  const getTransformClass = () => {
+    switch (animationState) {
+      case 'hover':
+        return 'scale-110';
+      case 'click':
+        return 'scale-95';
+      default:
+        return 'scale-100';
     }
   };
 
@@ -93,38 +85,11 @@ export default function FlowbieMini() {
       role="button"
       aria-label="Flowbie Assistant"
     >
-      <div className="relative w-32 h-32 cursor-pointer pointer-events-auto">
-        <video
-          ref={idleRef}
-          src="/assets/flowbie/flowbie_idle.mp4"
-          className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ease-in-out pointer-events-none ${
-            currentVideo === 'idle' ? 'opacity-100' : 'opacity-0'
-          }`}
-          loop
-          muted
-          playsInline
-        />
-
-        <video
-          ref={hoverRef}
-          src="/assets/flowbie/flowbie_hover.mp4"
-          className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ease-in-out pointer-events-none ${
-            currentVideo === 'hover' ? 'opacity-100' : 'opacity-0'
-          }`}
-          loop
-          muted
-          playsInline
-        />
-
-        <video
-          ref={clickRef}
-          src="/assets/flowbie/flowbie_click.mp4"
-          className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ease-in-out pointer-events-none ${
-            currentVideo === 'click' ? 'opacity-100' : 'opacity-0'
-          }`}
-          muted
-          playsInline
-          onEnded={handleClickEnd}
+      <div className="relative w-32 h-32 cursor-pointer">
+        <img
+          src={flowbieGif}
+          alt="Flowbie"
+          className={`w-full h-full object-contain transition-all duration-300 ease-in-out ${getTransformClass()}`}
         />
 
         {showBubble && (
