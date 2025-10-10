@@ -8,9 +8,9 @@ export default function GuestNavigation() {
   return (
     <header className="py-6 px-8 border-b border-gray-800" style={{ background: 'linear-gradient(to bottom, #06b6d4 0%, #0c0f14 25%)' }}>
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-        <Link to="/landing" className="flex items-center gap-1 flex-shrink-0 mr-8">
-          <img src="/image.png" alt="FlowNation" className="w-16 h-16" />
-          <span className="text-white text-xl font-bold tracking-tight whitespace-nowrap" >
+        <Link to="/landing" className="flex items-center gap-2 flex-shrink-0 mr-8">
+          <img src="/image.png" alt="FlowNation" className="w-12 h-12 md:w-20 md:h-20" />
+          <span className="text-white text-xl md:text-2xl font-bold tracking-tight whitespace-nowrap" >
             Flow<span className="text-cyan-400">Nation</span>
           </span>
         </Link>
