@@ -1,5 +1,5 @@
 import { useAuth } from '../context/AuthContext';
-import GuestNavigation from '../components/GuestNavigation';
+import Header from '../components/Header';
 import RegisteredNavigation from '../components/RegisteredNavigation';
 import BuddyMatch from '../components/BuddyMatch';
 import Footer from '../components/Footer';
@@ -9,7 +9,7 @@ export default function BuddyMatchPage() {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#0c0f14' }}>
-      {isRegistered ? <RegisteredNavigation /> : <GuestNavigation />}
+      {isRegistered ? <RegisteredNavigation /> : <Header />}
 
       <main className="pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-6">

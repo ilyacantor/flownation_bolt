@@ -1,6 +1,7 @@
 import { User, Settings, Link as LinkIcon, Palette } from 'lucide-react';
 import { useState } from 'react';
 import RegisteredNavigation from '../components/RegisteredNavigation';
+import Footer from '../components/Footer';
 
 export default function ProfileSettingsPage() {
   const [darkMode, setDarkMode] = useState(true);
@@ -253,22 +254,7 @@ export default function ProfileSettingsPage() {
           </div>
         </main>
 
-        <footer className="py-6 px-8 border-t border-gray-800" style={{ background: 'linear-gradient(to top, #ff6f00 0%, #0c0f14 25%)' }}>
-          <div className="flex items-center justify-between">
-            <div className="flex gap-6 text-sm text-gray-400" >
-              <a href="#" className="hover:text-white transition-colors">FlowNation</a>
-              <a href="#" className="hover:text-white transition-colors">Support</a>
-              <a href="#" className="hover:text-white transition-colors">Legal</a>
-            </div>
-            <div className="flex gap-4 text-gray-400">
-              <a href="#" className="hover:text-white transition-colors">f</a>
-              <a href="#" className="hover:text-white transition-colors">𝕏</a>
-              <a href="#" className="hover:text-white transition-colors">📷</a>
-              <a href="#" className="hover:text-white transition-colors">in</a>
-              <a href="#" className="hover:text-white transition-colors">▶</a>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </div>
   );

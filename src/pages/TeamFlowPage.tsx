@@ -1,4 +1,4 @@
-import GuestNavigation from '../components/GuestNavigation';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { MapPin, Users, Mail, Bike, Mountain, Waves } from 'lucide-react';
 
@@ -106,7 +106,7 @@ const typeIcons = {
 export default function TeamFlowPage() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#0c0f14' }}>
-      <GuestNavigation />
+      <Header />
       <main className="pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-6">
           <section className="text-center mb-12">

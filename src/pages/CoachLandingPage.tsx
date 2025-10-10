@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-import GuestNavigation from '../components/GuestNavigation';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Shield, Calendar, TrendingUp, Users, MessageCircle, ClipboardCheck } from 'lucide-react';
 
 export default function CoachLandingPage() {
   return (
     <div className="flex flex-col min-h-screen text-white bg-[#0E1013]">
-      <GuestNavigation />
+      <Header />
 
       <section className="relative py-32 px-8 bg-gradient-to-b from-cyan-900/20 to-[#0E1013] border-b border-white/10">
         <div className="max-w-5xl mx-auto text-center">

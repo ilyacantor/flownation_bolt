@@ -5,6 +5,7 @@ import PerformanceReadiness from '../components/flowhub/PerformanceReadiness';
 import GearLocker from '../components/flowhub/GearLocker';
 import TailoredNewsfeed from '../components/flowhub/TailoredNewsfeed';
 import FlowUniversity from '../components/flowhub/FlowUniversity';
+import Footer from '../components/Footer';
 
 export default function FlowHubPage() {
   return (
@@ -35,20 +36,7 @@ export default function FlowHubPage() {
         </div>
       </main>
 
-      <footer className="mt-16 py-6 px-8 border-t border-gray-800">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex gap-6 text-sm text-gray-400">
-            <a href="#" className="hover:text-white transition-colors">FlowNation</a>
-            <a href="#" className="hover:text-white transition-colors">Support</a>
-            <a href="#" className="hover:text-white transition-colors">Legal</a>
-          </div>
-          <div className="flex gap-4 text-cyan-500">
-            <a href="#" className="hover:text-cyan-400 transition-colors">f</a>
-            <a href="#" className="hover:text-cyan-400 transition-colors">𝕏</a>
-            <a href="#" className="hover:text-cyan-400 transition-colors">in</a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { Search, Filter, MapPin, Calendar, Mountain, TrendingUp } from 'lucide-r
 import { useState } from 'react';
 import RegisteredNavigation from '../components/RegisteredNavigation';
 import InteractiveMap from '../components/InteractiveMap';
+import Footer from '../components/Footer';
 
 const SPORT_TYPES = ['All', 'Road Cycling', 'Gravel', 'MTB', 'Triathlon', 'Running'];
 
@@ -186,22 +187,7 @@ export default function EventDiscoveryPage() {
         </div>
       </main>
 
-      <footer className="mt-16 py-6 px-8 border-t border-gray-800" style={{ background: 'linear-gradient(to top, #06b6d4 0%, #0c0f14 25%)' }}>
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex gap-6 text-sm text-gray-400" >
-            <a href="#" className="hover:text-white transition-colors">FlowNation</a>
-            <a href="#" className="hover:text-white transition-colors">Support</a>
-            <a href="#" className="hover:text-white transition-colors">Legal</a>
-          </div>
-          <div className="flex gap-4 text-orange-500">
-            <a href="#" className="hover:text-orange-400 transition-colors">f</a>
-            <a href="#" className="hover:text-orange-400 transition-colors">𝕏</a>
-            <a href="#" className="hover:text-orange-400 transition-colors">📷</a>
-            <a href="#" className="hover:text-orange-400 transition-colors">in</a>
-            <a href="#" className="hover:text-orange-400 transition-colors">▶</a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import GuestNavigation from '../components/GuestNavigation';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 import {
   Users,
@@ -110,7 +110,7 @@ export default function SolutionsPage() {
 
   return (
     <div className="min-h-screen bg-[#0E1013] text-white">
-      <GuestNavigation />
+      <Header />
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6">
