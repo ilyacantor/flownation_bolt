@@ -45,7 +45,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 mt-auto pb-32">
+        <div className="flex flex-col gap-3 mt-auto pb-40">
           <TeaserCard
             icon={<UserPlus size={32} />}
             title="Find Your Ride Buddies"
@@ -95,7 +95,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="absolute right-12 top-1/3 w-80 flex flex-col gap-4 max-w-[25vw]">
+        <div className="absolute right-12 top-[20%] w-80 flex flex-col gap-4 max-w-[25vw]">
           <TeaserCard
             icon={<UserPlus size={32} />}
             title="Find Your Ride Buddies"
