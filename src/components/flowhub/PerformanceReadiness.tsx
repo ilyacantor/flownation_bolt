@@ -136,6 +136,17 @@ export default function PerformanceReadiness() {
               }
               return null;
             })}
+
+            {/* White trend line going up from left to right */}
+            <line
+              x1="0"
+              y1="90%"
+              x2="100%"
+              y2="10%"
+              stroke="white"
+              strokeWidth="2"
+              opacity="0.7"
+            />
           </svg>
 
           {/* Date labels */}
