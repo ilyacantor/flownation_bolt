@@ -174,7 +174,7 @@ export default function BuddyMatch({ userId }: BuddyMatchProps) {
                   <div className="flex-1 min-w-0">
                     <h3 className="text-lg font-bold text-white truncate mb-1">{r.name}</h3>
                     <div className="text-sm text-gray-400 mb-2">
-                      {r.city} • {r.team || r.rideType}
+                      {r.city} • {(r as any).team || 'RED BULL - BORA - HANSGROHE'}
                     </div>
                     <div className="flex items-center gap-2 text-xs text-green-400 mb-1">
                       <span className="w-2 h-2 bg-green-400 rounded-full"></span>
