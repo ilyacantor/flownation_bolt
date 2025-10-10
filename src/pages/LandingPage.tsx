@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import QuickSignupModal from '../components/QuickSignupModal';
-import GuestNavigation from '../components/GuestNavigation';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 import HeroSection from '../components/HeroSection';
 import TeaserCard from '../components/TeaserCard';
@@ -19,7 +19,7 @@ export default function LandingPage() {
 
   return (
     <div className="flex flex-col text-white bg-[#0E1013]">
-      <GuestNavigation />
+      <Header />
       <HeroSection />
 
       {/* Who Are You Section */}
