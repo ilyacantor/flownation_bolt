@@ -20,7 +20,7 @@ export default function FlowbieMini() {
   }, []);
 
   const handleMouseEnter = () => {
-    if (currentVideo === 'idle') {
+    if (currentVideo === 'idle' && !showBubble) {
       setIsHovering(true);
       setCurrentVideo('hover');
       if (hoverRef.current) {
@@ -31,7 +31,7 @@ export default function FlowbieMini() {
   };
 
   const handleMouseLeave = () => {
-    if (currentVideo === 'hover') {
+    if (currentVideo === 'hover' && !showBubble) {
       setIsHovering(false);
       setCurrentVideo('idle');
       if (idleRef.current) {
@@ -40,10 +40,12 @@ export default function FlowbieMini() {
     }
   };
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
     const introDone = localStorage.getItem('flowbie_intro_done');
 
     if (!introDone) {
+      setIsHovering(false);
       setCurrentVideo('click');
       if (clickRef.current) {
         clickRef.current.currentTime = 0;
@@ -91,11 +93,11 @@ export default function FlowbieMini() {
       role="button"
       aria-label="Flowbie Assistant"
     >
-      <div className="relative w-32 h-32 cursor-pointer">
+      <div className="relative w-32 h-32 cursor-pointer pointer-events-auto">
         <video
           ref={idleRef}
           src="/assets/flowbie/flowbie_idle.mp4"
-          className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ease-in-out pointer-events-auto ${
+          className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ease-in-out pointer-events-none ${
             currentVideo === 'idle' ? 'opacity-100' : 'opacity-0'
           }`}
           loop
@@ -106,7 +108,7 @@ export default function FlowbieMini() {
         <video
           ref={hoverRef}
           src="/assets/flowbie/flowbie_hover.mp4"
-          className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ease-in-out pointer-events-auto ${
+          className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ease-in-out pointer-events-none ${
             currentVideo === 'hover' ? 'opacity-100' : 'opacity-0'
           }`}
           loop
@@ -117,7 +119,7 @@ export default function FlowbieMini() {
         <video
           ref={clickRef}
           src="/assets/flowbie/flowbie_click.mp4"
-          className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ease-in-out pointer-events-auto ${
+          className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ease-in-out pointer-events-none ${
             currentVideo === 'click' ? 'opacity-100' : 'opacity-0'
           }`}
           muted
