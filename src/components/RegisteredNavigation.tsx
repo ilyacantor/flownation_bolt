@@ -3,15 +3,15 @@ import { User } from 'lucide-react';
 
 export default function RegisteredNavigation() {
   return (
-    <header className="py-6 px-8 border-b border-gray-800" style={{ background: 'linear-gradient(to bottom, #06b6d4 0%, #0c0f14 25%)' }}>
+    <header className="py-4 md:py-6 px-4 md:px-8 border-b border-gray-800" style={{ background: 'linear-gradient(to bottom, #06b6d4 0%, #0c0f14 25%)' }}>
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link to="/landing" className="flex items-center gap-2">
-          <img src="/image.png" alt="FlowNation" className="w-12 h-12" />
-          <span className="text-white text-xl font-bold tracking-tight" >
+        <Link to="/landing" className="flex items-center gap-1 md:gap-2">
+          <img src="/image.png" alt="FlowNation" className="w-10 h-10 md:w-12 md:h-12" />
+          <span className="text-base md:text-xl text-white font-bold tracking-tight" >
             Flow<span className="text-cyan-400">Nation</span>
           </span>
         </Link>
-        <nav className="flex items-center gap-8 text-sm flex-1 justify-center" >
+        <nav className="hidden md:flex items-center gap-8 text-sm flex-1 justify-center" >
           <Link to="/paddock" className="text-white hover:text-cyan-400 transition-colors">The Paddock</Link>
           <Link to="/flowhub" className="text-white hover:text-cyan-400 transition-colors">FlowHub</Link>
           <Link to="/discover" className="text-white hover:text-cyan-400 transition-colors">Discover Events</Link>

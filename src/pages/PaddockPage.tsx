@@ -71,13 +71,13 @@ export default function PaddockPage() {
     <div className="min-h-screen" style={{ background: '#0B0D10' }}>
       <RegisteredNavigation />
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-white mb-2">The Paddock</h1>
-          <p className="text-gray-400 text-lg">What's happening in my community right now?</p>
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-6 md:py-8">
+        <div className="mb-6 md:mb-8">
+          <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">The Paddock</h1>
+          <p className="text-gray-400 text-base md:text-lg">What's happening in my community right now?</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 mb-6">
           <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
             <h2 className="text-white text-2xl font-bold mb-4">Your Next Ride</h2>
             <div className="space-y-4">
@@ -150,15 +150,15 @@ export default function PaddockPage() {
           </div>
         </div>
 
-        <div className="mb-6 bg-gradient-to-r from-cyan-900/30 to-blue-900/30 backdrop-blur-sm rounded-2xl p-6 border border-cyan-500/30">
-          <div className="flex items-center justify-between">
+        <div className="mb-6 bg-gradient-to-r from-cyan-900/30 to-blue-900/30 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-cyan-500/30">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div>
-              <h2 className="text-white text-2xl font-bold mb-2">Support Your Local Bike Shop</h2>
-              <p className="text-gray-300">Find gear and connect with shops in your community</p>
+              <h2 className="text-white text-xl md:text-2xl font-bold mb-2">Support Your Local Bike Shop</h2>
+              <p className="text-gray-300 text-sm md:text-base">Find gear and connect with shops in your community</p>
             </div>
             <button
               onClick={() => setShowLBS(!showLBS)}
-              className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg transition-colors font-medium"
+              className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg transition-colors font-medium whitespace-nowrap w-full md:w-auto"
             >
               {showLBS ? 'Close' : 'Search Shops'}
             </button>

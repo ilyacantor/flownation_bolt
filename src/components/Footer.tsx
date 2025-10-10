@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <footer className="py-8" style={{ background: 'linear-gradient(to top, #06b6d4 0%, #0c0f14 25%)', borderTop: 'none' }}>
-      <div className="max-w-7xl mx-auto px-6">
+    <footer className="py-6 md:py-8" style={{ background: 'linear-gradient(to top, #06b6d4 0%, #0c0f14 25%)', borderTop: 'none' }}>
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex gap-8 text-gray-400 text-sm">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-gray-400 text-xs md:text-sm">
             <a href="#company" className="hover:text-white transition-colors">Company</a>
             <Link to="/about/tools" className="hover:text-white transition-colors">Our Tools</Link>
             <a href="#resources" className="hover:text-white transition-colors">Resources</a>
