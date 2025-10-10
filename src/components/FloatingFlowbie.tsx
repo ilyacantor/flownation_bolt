@@ -60,28 +60,25 @@ export default function FloatingFlowbie() {
   };
 
   const handleNextStep = () => {
-    const currentStep = tourSteps[tourStep];
-
     if (tourStep === tourSteps.length - 1) {
       setShowSpeech(false);
       setDismissed(true);
       return;
     }
 
-    if (currentStep.nextQuestion === "Can I show you around?") {
-      setShowSpeech(false);
-      setShowQuestion(true);
-      setTourStep(tourStep + 1);
+    setShowSpeech(false);
+    const nextStep = tourSteps[tourStep + 1];
+    if (nextStep.route) {
+      navigate(nextStep.route);
+      setTimeout(() => {
+        setTourStep(tourStep + 1);
+        setShowSpeech(true);
+      }, 500);
     } else {
-      setShowSpeech(false);
-      const nextStep = tourSteps[tourStep + 1];
-      if (nextStep.route) {
-        navigate(nextStep.route);
-        setTimeout(() => {
-          setTourStep(tourStep + 1);
-          setShowSpeech(true);
-        }, 500);
-      }
+      setTimeout(() => {
+        setTourStep(tourStep + 1);
+        setShowSpeech(true);
+      }, 300);
     }
   };
 
