@@ -16,7 +16,7 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen overflow-hidden bg-black">
       <img
-        src="/image copy copy.png"
+        src="/landing1c.png"
         alt="Cyclists on mountain road"
         className="absolute inset-0 w-full h-full object-cover"
       />
