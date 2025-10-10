@@ -32,14 +32,16 @@ export default function FloatingFlowbie() {
 
   return (
     <>
-      <div className="fixed bottom-8 right-8 z-50 animate-float">
-        <img
-          src={flowbieImg}
-          alt="Flowbie"
-          className="w-20 h-20 drop-shadow-2xl cursor-pointer hover:scale-110 transition-transform"
-          onClick={() => !showSpeech && !showQuestion && setShowQuestion(true)}
-        />
-      </div>
+      {!showQuestion && !showSpeech && (
+        <div className="fixed bottom-8 right-8 z-50 animate-float">
+          <img
+            src={flowbieImg}
+            alt="Flowbie"
+            className="w-20 h-20 drop-shadow-2xl cursor-pointer hover:scale-110 transition-transform"
+            onClick={() => setShowQuestion(true)}
+          />
+        </div>
+      )}
 
       {showQuestion && (
         <div className="fixed bottom-32 right-8 z-50 animate-slideIn">
