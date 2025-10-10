@@ -21,7 +21,7 @@ export default function SolutionsPage() {
     {
       title: 'The Paddock',
       subtitle: 'Community Hub',
-      description: 'An outward-looking dashboard for discovering buddy matches, group rides, and community chatter. Your window into the vibrant FlowNation community.',
+      description: 'Welcome to The Paddock — the digital clubhouse for endurance athletes. Discover rides, join events, and connect with local experts who keep you moving. It\'s where your flow meets your community.',
       icon: Users,
       color: 'from-cyan-500 to-blue-600',
       link: '/paddock'
