@@ -69,13 +69,10 @@ export default function FloatingFlowbie() {
   }, []);
 
   useEffect(() => {
-    if (tourActive && isMinimized) {
+    if (tourActive && isMinimized && location.pathname !== '/') {
       const currentStep = tourSteps[tourStep];
       if (currentStep?.route === location.pathname) {
-        setIsMinimized(false);
-        setTimeout(() => {
-          setShowSpeech(true);
-        }, 500);
+        setIsMinimized(true);
       }
     }
   }, [location.pathname, tourActive, isMinimized, tourStep]);
@@ -124,11 +121,11 @@ export default function FloatingFlowbie() {
 
   const handleClickAround = () => {
     setShowSpeech(false);
+    setIsMinimized(true);
     setBubbleText("I'm here for you!");
     setShowBubble(true);
     setTimeout(() => {
       setShowBubble(false);
-      setIsMinimized(true);
     }, 2000);
   };
 
@@ -138,8 +135,7 @@ export default function FloatingFlowbie() {
       setShowBubble(true);
       setTimeout(() => {
         setShowBubble(false);
-        setIsMinimized(false);
-        setShowSpeech(true);
+        handleNextStep();
       }, 1500);
     } else {
       setShowQuestion(true);
