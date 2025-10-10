@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import HeroSection from '../components/HeroSection';
 import TeaserCard from '../components/TeaserCard';
-import { User, Users, Shield, Store, UserPlus, Calendar, UsersRound } from 'lucide-react';
+import { User, Users, Shield, Store, TrendingUp } from 'lucide-react';
 import { mockRiders } from '../data/mockRiders.js';
 
 export default function LandingPage() {
@@ -26,12 +26,13 @@ export default function LandingPage() {
       <section className="w-full py-12 md:py-20 text-center bg-[#0E1013] border-t border-white/10">
         <h2 className="text-3xl md:text-4xl font-semibold mb-8 md:mb-10 px-4">Who Are You?</h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto px-4 md:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6 max-w-6xl mx-auto px-4 md:px-8">
           {[
             { label: "I'm an athlete", icon: User, path: '/flowhub' },
             { label: "I'm a coach", icon: Shield, path: '/coach-landing' },
             { label: 'I run a team', icon: Users, path: '/team-landing' },
-            { label: "I'm your LBS", icon: Store, path: '/lbs-landing' }
+            { label: "I'm your LBS", icon: Store, path: '/lbs-landing' },
+            { label: "I'm an investor", icon: TrendingUp, path: '/about/tools' }
           ].map((item, i) => {
             const Icon = item.icon;
             return (
