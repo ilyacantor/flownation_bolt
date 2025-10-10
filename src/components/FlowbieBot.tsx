@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import flowbieImg from "./flowbie.png";
+
+const flowbieImg = "/assets/u7393982445_A_small_cute_futuristic_robot_mascot_standing_on__f96e5bda-f9bb-4256-98bc-3cfa5ec07533_2.gif";
 
 interface Message { sender: "bot" | "user"; text: string; }
 interface UserPrefs { name?: string; sport?: string; distance?: string; }
