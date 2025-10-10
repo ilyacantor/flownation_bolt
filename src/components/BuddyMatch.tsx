@@ -2,8 +2,7 @@ import { useState } from "react";
 import { mockRiders, demoUser } from "../data/mockRiders";
 import { getActiveMatches, getPassiveMatches } from "../utils/BuddyMatchEngine";
 import RideBuddyCard from "./home/RideBuddyCard";
-import SwipeableCard from "./SwipeableCard";
-import { Search, MapPin, Mountain, Target, Grid, Layers } from "lucide-react";
+import { Search, MapPin, Mountain, Target, Grid, MessageCircle } from "lucide-react";
 
 interface BuddyMatchProps {
   userId?: string;
@@ -12,7 +11,7 @@ interface BuddyMatchProps {
 export default function BuddyMatch({ userId }: BuddyMatchProps) {
   const user = userId ? mockRiders.find(r => r.id === userId) || demoUser : demoUser;
   const [tab, setTab] = useState("active");
-  const [viewMode, setViewMode] = useState<"swipe" | "grid">("swipe");
+  const [viewMode, setViewMode] = useState<"cards" | "grid">("cards");
   const [visibleCount, setVisibleCount] = useState(50);
   const [searchQuery, setSearchQuery] = useState("");
   const [locationFilter, setLocationFilter] = useState("");
@@ -37,8 +36,8 @@ export default function BuddyMatch({ userId }: BuddyMatchProps) {
     setVisibleCount(prev => prev + 50);
   };
 
-  const handleSwipe = (direction: string, rider: any) => {
-    console.log(`Swiped ${direction} on ${rider.name}`);
+  const handleSendDM = (rider: any) => {
+    console.log(`Sending DM to ${rider.name}`);
   };
 
   return (
@@ -122,14 +121,14 @@ export default function BuddyMatch({ userId }: BuddyMatchProps) {
         <div className="flex gap-2">
           <button
             className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${
-              viewMode === "swipe"
+              viewMode === "cards"
                 ? "bg-orange-600 hover:bg-orange-500 text-white"
                 : "bg-gray-800 hover:bg-gray-700 text-gray-300"
             }`}
-            onClick={() => setViewMode("swipe")}
+            onClick={() => setViewMode("cards")}
           >
-            <Layers size={18} />
-            Swipe Mode
+            <MessageCircle size={18} />
+            Cards
           </button>
           <button
             className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${
@@ -151,10 +150,59 @@ export default function BuddyMatch({ userId }: BuddyMatchProps) {
             No matches found. Try adjusting your preferences or check back later!
           </p>
         </div>
-      ) : viewMode === "swipe" ? (
-        <div className="py-8">
-          <SwipeableCard riders={filteredMatches} onSwipe={handleSwipe} />
-        </div>
+      ) : viewMode === "cards" ? (
+        <>
+          <div className="mb-6">
+            <p className="text-gray-400 text-sm">
+              Showing {Math.min(visibleCount, filteredMatches.length)} of {filteredMatches.length} matches
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredMatches.slice(0, visibleCount).map((r) => (
+              <div
+                key={r.id}
+                className="bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-800 overflow-hidden hover:border-cyan-500/50 transition-all"
+              >
+                <div className="flex items-center gap-4 p-6">
+                  <div className="relative">
+                    <img
+                      src={r.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(r.name)}&background=1e293b&color=fff&size=80`}
+                      alt={r.name}
+                      className="w-16 h-16 rounded-full object-cover ring-2 ring-orange-500"
+                    />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg font-bold text-white truncate mb-1">{r.name}</h3>
+                    <div className="text-sm text-gray-400 mb-2">
+                      {r.city} • {r.team || r.rideType}
+                    </div>
+                    <div className="flex items-center gap-2 text-xs text-green-400 mb-1">
+                      <span className="w-2 h-2 bg-green-400 rounded-full"></span>
+                      Matched {Math.floor(Math.random() * 5) + 1} days ago
+                    </div>
+                  </div>
+                </div>
+                <button
+                  onClick={() => handleSendDM(r)}
+                  className="w-full bg-orange-600 hover:bg-orange-500 text-white font-semibold py-3 flex items-center justify-center gap-2 transition-all"
+                >
+                  <MessageCircle size={20} />
+                  Send DM
+                </button>
+              </div>
+            ))}
+          </div>
+          {visibleCount < filteredMatches.length && (
+            <div className="mt-8 text-center">
+              <button
+                onClick={loadMore}
+                className="px-8 py-3 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg font-semibold transition-all"
+              >
+                Load More ({Math.min(50, filteredMatches.length - visibleCount)} more)
+              </button>
+            </div>
+          )}
+        </>
       ) : (
         <>
           <div className="mb-6">
