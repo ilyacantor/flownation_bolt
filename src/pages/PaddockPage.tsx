@@ -78,8 +78,8 @@ export default function PaddockPage() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 mb-6">
-          <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
-            <h2 className="text-white text-2xl font-bold mb-4">Your Next Ride</h2>
+          <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-gray-800">
+            <h2 className="text-white text-xl md:text-2xl font-bold mb-4">Your Next Ride</h2>
             <div className="space-y-4">
               {groupRides.map((ride) => (
                 <div key={ride.id} className="bg-gray-800/50 rounded-xl p-4 border border-gray-700 hover:border-cyan-400/50 transition-all">
@@ -105,8 +105,8 @@ export default function PaddockPage() {
             </div>
           </div>
 
-          <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
-            <h2 className="text-white text-2xl font-bold mb-4">The Local Scene</h2>
+          <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-gray-800">
+            <h2 className="text-white text-xl md:text-2xl font-bold mb-4">The Local Scene</h2>
             <div className="mb-6">
               <h3 className="text-white font-semibold mb-3">Active Matches</h3>
               <ActiveMatches />
@@ -117,8 +117,8 @@ export default function PaddockPage() {
             </div>
           </div>
 
-          <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
-            <h2 className="text-white text-2xl font-bold mb-4">Your Race Calendar</h2>
+          <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-gray-800">
+            <h2 className="text-white text-xl md:text-2xl font-bold mb-4">Your Race Calendar</h2>
             <div className="space-y-4">
               {headlineEvents.map((event) => (
                 <div key={event.id} className="bg-gray-800/50 rounded-xl p-4 border border-gray-700 hover:border-orange-400/50 transition-all">
@@ -167,9 +167,9 @@ export default function PaddockPage() {
 
         {showLBS && (
           <div className="mb-6">
-            <div className="bg-gray-900/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-800">
-              <div className="flex justify-between items-center mb-6">
-                <h2 className="text-white text-2xl font-bold">Find Gear at Local Shops</h2>
+            <div className="bg-gray-900/80 backdrop-blur-sm rounded-2xl p-4 md:p-8 border border-gray-800">
+              <div className="flex justify-between items-center mb-4 md:mb-6">
+                <h2 className="text-white text-xl md:text-2xl font-bold">Find Gear at Local Shops</h2>
                 <button
                   onClick={() => setShowLBS(false)}
                   className="text-gray-400 hover:text-white transition-colors"

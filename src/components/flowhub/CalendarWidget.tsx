@@ -32,11 +32,11 @@ export default function CalendarWidget() {
   };
 
   return (
-    <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-3">
-          <CalendarIcon className="text-cyan-400" size={24} />
-          <h2 className="text-white text-2xl font-bold">My Calendar</h2>
+    <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-gray-800">
+      <div className="flex items-center justify-between mb-4 md:mb-6">
+        <div className="flex items-center gap-2 md:gap-3">
+          <CalendarIcon className="text-cyan-400" size={20} />
+          <h2 className="text-white text-xl md:text-2xl font-bold">My Calendar</h2>
         </div>
         <div className="flex items-center gap-2">
           <button
@@ -54,8 +54,8 @@ export default function CalendarWidget() {
         </div>
       </div>
 
-      <div className="space-y-4">
-        <div className="grid grid-cols-7 gap-2 text-center text-xs text-gray-400 font-semibold mb-2">
+      <div className="space-y-2 md:space-y-4">
+        <div className="grid grid-cols-7 gap-1 md:gap-2 text-center text-xs text-gray-400 font-semibold mb-2">
           <div>SUN</div>
           <div>MON</div>
           <div>TUE</div>
@@ -66,13 +66,13 @@ export default function CalendarWidget() {
         </div>
 
         {weeks.map((week, weekIdx) => (
-          <div key={weekIdx} className="grid grid-cols-7 gap-2">
+          <div key={weekIdx} className="grid grid-cols-7 gap-1 md:gap-2">
             {week.map((event) => {
               const dayNum = event.date.getDate();
               return (
                 <div
                   key={event.id}
-                  className="bg-gray-800/50 rounded-lg p-3 min-h-[100px] hover:bg-gray-800 transition-colors cursor-pointer"
+                  className="bg-gray-800/50 rounded-lg p-2 md:p-3 min-h-[80px] md:min-h-[100px] hover:bg-gray-800 transition-colors cursor-pointer"
                 >
                   <div className="flex items-start justify-between mb-2">
                     <span className="text-white text-sm font-semibold">{dayNum}</span>
@@ -92,7 +92,7 @@ export default function CalendarWidget() {
         ))}
       </div>
 
-      <div className="mt-6 flex items-center gap-4 text-xs">
+      <div className="mt-4 md:mt-6 flex flex-wrap items-center gap-3 md:gap-4 text-xs">
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-blue-500" />
           <span className="text-gray-400">Training</span>

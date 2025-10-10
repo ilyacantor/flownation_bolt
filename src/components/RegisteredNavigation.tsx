@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { User } from 'lucide-react';
+import MobileNav from './MobileNav';
 
 export default function RegisteredNavigation() {
   return (
-    <header className="py-4 md:py-6 px-4 md:px-8 border-b border-gray-800" style={{ background: 'linear-gradient(to bottom, #06b6d4 0%, #0c0f14 25%)' }}>
+    <header className="py-4 md:py-6 px-4 md:px-8 border-b border-gray-800 relative" style={{ background: 'linear-gradient(to bottom, #06b6d4 0%, #0c0f14 25%)' }}>
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link to="/landing" className="flex items-center gap-1 md:gap-2">
           <img src="/image.png" alt="FlowNation" className="w-10 h-10 md:w-12 md:h-12" />
@@ -17,7 +18,8 @@ export default function RegisteredNavigation() {
           <Link to="/discover" className="text-white hover:text-cyan-400 transition-colors">Discover Events</Link>
           <Link to="/buddymatch" className="text-white hover:text-cyan-400 transition-colors">Buddy Finder</Link>
         </nav>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
+          <MobileNav />
           <Link to="/profile" className="w-10 h-10 bg-gray-900 hover:bg-gray-800 rounded-lg flex items-center justify-center text-white transition-colors">
             <User size={20} />
           </Link>

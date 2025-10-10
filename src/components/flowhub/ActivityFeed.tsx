@@ -2,13 +2,13 @@ import { ThumbsUp, MessageCircle, Bike } from 'lucide-react';
 
 export default function ActivityFeed() {
   return (
-    <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
-      <h2 className="text-white text-2xl font-bold mb-6">My Activity Feed</h2>
+    <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-gray-800">
+      <h2 className="text-white text-xl md:text-2xl font-bold mb-4 md:mb-6">My Activity Feed</h2>
       <div>
-        <div className="bg-white rounded border border-gray-300 overflow-hidden shadow-sm mb-5">
-          <div className="px-4 pt-4 pb-2">
-            <div className="flex items-start gap-3 mb-3">
-              <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+        <div className="bg-white rounded border border-gray-300 overflow-hidden shadow-sm mb-4 md:mb-5">
+          <div className="px-3 md:px-4 pt-3 md:pt-4 pb-2">
+            <div className="flex items-start gap-2 md:gap-3 mb-3">
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-xs md:text-sm flex-shrink-0">
                 IC
               </div>
               <div className="flex-1 min-w-0">
@@ -27,7 +27,7 @@ export default function ActivityFeed() {
               </div>
             </div>
 
-            <div className="flex gap-6 text-sm mt-3">
+            <div className="flex gap-3 md:gap-6 text-xs md:text-sm mt-3">
               <div>
                 <span className="text-gray-600">Distance</span>
                 <div className="font-semibold text-gray-900">73.27 mi</div>
@@ -55,7 +55,7 @@ export default function ActivityFeed() {
             </div>
           </div>
 
-          <div className="px-4 pb-4 flex items-center gap-4">
+          <div className="px-3 md:px-4 pb-3 md:pb-4 flex items-center gap-4">
             <button className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors">
               <ThumbsUp size={18} />
             </button>
@@ -65,10 +65,10 @@ export default function ActivityFeed() {
           </div>
         </div>
 
-        <div className="bg-white rounded border border-gray-300 overflow-hidden shadow-sm mb-5">
-          <div className="px-4 pt-4 pb-2">
-            <div className="flex items-start gap-3 mb-3">
-              <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+        <div className="bg-white rounded border border-gray-300 overflow-hidden shadow-sm mb-4 md:mb-5">
+          <div className="px-3 md:px-4 pt-3 md:pt-4 pb-2">
+            <div className="flex items-start gap-2 md:gap-3 mb-3">
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-xs md:text-sm flex-shrink-0">
                 IC
               </div>
               <div className="flex-1 min-w-0">
@@ -87,7 +87,7 @@ export default function ActivityFeed() {
               </div>
             </div>
 
-            <div className="flex gap-6 text-sm mt-3">
+            <div className="flex gap-3 md:gap-6 text-xs md:text-sm mt-3">
               <div>
                 <span className="text-gray-600">Distance</span>
                 <div className="font-semibold text-gray-900">73.27 mi</div>
@@ -123,7 +123,7 @@ export default function ActivityFeed() {
             </div>
           </div>
 
-          <div className="px-4 pb-4 flex items-center gap-4">
+          <div className="px-3 md:px-4 pb-3 md:pb-4 flex items-center gap-4">
             <button className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors">
               <ThumbsUp size={18} />
             </button>
@@ -133,10 +133,10 @@ export default function ActivityFeed() {
           </div>
         </div>
 
-        <div className="bg-white rounded border border-gray-300 overflow-hidden shadow-sm mb-5">
-          <div className="px-4 pt-4 pb-2">
-            <div className="flex items-start gap-3 mb-3">
-              <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+        <div className="bg-white rounded border border-gray-300 overflow-hidden shadow-sm mb-4 md:mb-5">
+          <div className="px-3 md:px-4 pt-3 md:pt-4 pb-2">
+            <div className="flex items-start gap-2 md:gap-3 mb-3">
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-xs md:text-sm flex-shrink-0">
                 IC
               </div>
               <div className="flex-1 min-w-0">
@@ -154,7 +154,7 @@ export default function ActivityFeed() {
               </div>
             </div>
 
-            <div className="flex gap-6 text-sm mt-3">
+            <div className="flex gap-3 md:gap-6 text-xs md:text-sm mt-3">
               <div>
                 <span className="text-gray-600">Distance</span>
                 <div className="font-semibold text-gray-900">12.4 mi</div>
@@ -180,7 +180,7 @@ export default function ActivityFeed() {
             </div>
           </div>
 
-          <div className="px-4 pb-4 flex items-center gap-4">
+          <div className="px-3 md:px-4 pb-3 md:pb-4 flex items-center gap-4">
             <button className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors">
               <ThumbsUp size={18} />
             </button>
