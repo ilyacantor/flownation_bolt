@@ -12,7 +12,7 @@ export default function ToolsPage() {
     {
       icon: Home,
       name: 'The Paddock',
-      desc: 'Your mission control. The first thing you see when you log in, The Paddock organizes your upcoming rides, local community buzz, and race calendar into one clear view.'
+      desc: 'Welcome to The Paddock — the digital clubhouse for endurance athletes. Discover rides, join events, and connect with local experts who keep you moving. It\'s where your flow meets your community.'
     },
     {
       icon: BarChart3,
