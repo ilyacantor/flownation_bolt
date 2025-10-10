@@ -14,8 +14,8 @@ export default function HeroSection() {
 
       <div className="absolute inset-0 bg-black/25 z-10" />
 
-      <div className="relative z-20 flex flex-col items-start justify-center h-full px-6 pt-32 max-w-7xl mx-auto">
-        <div className="bg-black/20 backdrop-blur-sm rounded-2xl px-10 py-6 border border-white/10">
+      <div className="relative z-20 flex items-center h-full px-6">
+        <div className="bg-black/20 backdrop-blur-sm rounded-2xl p-6 border border-white/10 w-fit">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-2">
             Welcome Home!
           </h1>
