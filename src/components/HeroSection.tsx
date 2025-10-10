@@ -75,8 +75,8 @@ export default function HeroSection() {
 
       {/* Desktop layout - centered welcome box with sidebar teasers */}
       <div className="hidden lg:block relative z-20 min-h-screen w-full">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="bg-black/20 backdrop-blur-sm rounded-2xl p-6 border border-white/10 text-center">
+        <div className="absolute inset-0 flex items-center justify-center px-8">
+          <div className="bg-black/20 backdrop-blur-sm rounded-2xl p-6 border border-white/10 text-center max-w-2xl mx-auto">
             <h1 className="text-5xl xl:text-6xl font-bold text-white mb-2">
               Welcome Home!
             </h1>
@@ -95,7 +95,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="absolute right-12 top-1/2 -translate-y-1/2 w-80 flex flex-col gap-4">
+        <div className="absolute right-12 top-1/2 -translate-y-1/2 w-80 flex flex-col gap-4 max-w-[25vw]">
           <TeaserCard
             icon={<UserPlus size={32} />}
             title="Find Your Ride Buddies"
