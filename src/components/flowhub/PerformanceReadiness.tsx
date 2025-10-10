@@ -137,12 +137,18 @@ export default function PerformanceReadiness() {
               return null;
             })}
 
-            {/* White trend line going up from left to right */}
-            <line
-              x1="0"
-              y1="90%"
-              x2="100%"
-              y2="10%"
+            {/* White trend line - unsteady with overall upward trend */}
+            <path
+              d={(() => {
+                const points = trainingLoadData.map((d, i) => {
+                  const baseY = 90 - (i / trainingLoadData.length) * 70;
+                  const variance = (Math.sin(i * 1.5) * 8) + (Math.cos(i * 0.8) * 6);
+                  const y = baseY + variance;
+                  return `${i === 0 ? 'M' : 'L'} ${(i / trainingLoadData.length) * 100}%,${y}%`;
+                });
+                return points.join(' ');
+              })()}
+              fill="none"
               stroke="white"
               strokeWidth="2"
               opacity="0.7"
