@@ -27,7 +27,7 @@ export default function QuickSignupModal({ open, onClose }: { open: boolean; onC
             onChange={(e) => setName(e.target.value)}
             placeholder="Your name"
             required
-            className="border rounded px-2 py-1"
+            className="border rounded px-2 py-1 text-gray-900"
           />
           <input
             type="email"
@@ -35,7 +35,7 @@ export default function QuickSignupModal({ open, onClose }: { open: boolean; onC
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email address"
             required
-            className="border rounded px-2 py-1"
+            className="border rounded px-2 py-1 text-gray-900"
           />
           <button
             type="submit"

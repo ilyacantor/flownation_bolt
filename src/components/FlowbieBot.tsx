@@ -136,7 +136,15 @@ export default function FlowbieBot({ onClose }: { onClose: () => void }) {
           <img src={flowbieImg} alt="Flowbie" className="w-8 h-8" />
           <h3 className="font-semibold text-lg text-cyan-700">Flowbie</h3>
         </div>
-        <button onClick={onClose} className="text-gray-500 hover:text-gray-800">✕</button>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onClose();
+          }}
+          className="text-gray-500 hover:text-gray-800 text-2xl leading-none p-1"
+        >
+          ✕
+        </button>
       </div>
 
       <div className="flex-1 overflow-y-auto mb-3 max-h-60 space-y-2 scrollbar-thin">
