@@ -1,4 +1,4 @@
-import { User, Settings, Link as LinkIcon, Palette } from 'lucide-react';
+import { User, Settings, Link as LinkIcon, Palette, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import RegisteredNavigation from '../components/RegisteredNavigation';
 import Footer from '../components/Footer';
@@ -7,11 +7,20 @@ export default function ProfileSettingsPage() {
   const [darkMode, setDarkMode] = useState(true);
   const [publicProfile, setPublicProfile] = useState(false);
   const [emailNotifications, setEmailNotifications] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div className="min-h-screen flex" style={{ backgroundColor: '#0c0f14' }}>
-      <aside className="w-48 bg-gray-950 border-r border-gray-800 flex flex-col">
+      <aside className={`fixed md:relative z-50 w-64 md:w-48 bg-gray-950 border-r border-gray-800 flex flex-col transition-transform duration-300 h-full ${
+        sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
+      }`}>
         <div className="flex-1 py-6">
+          <div className="flex items-center justify-between px-3 mb-4 md:hidden">
+            <h2 className="text-white font-semibold">Menu</h2>
+            <button onClick={() => setSidebarOpen(false)} className="text-gray-400 hover:text-white">
+              <X size={24} />
+            </button>
+          </div>
           <nav className="space-y-1 px-3">
             <button className="w-full flex items-center gap-3 px-3 py-2 text-white bg-gray-900 rounded-lg text-sm" >
               <User size={18} />
@@ -44,19 +53,28 @@ export default function ProfileSettingsPage() {
       <div className="flex-1 flex flex-col">
         <RegisteredNavigation />
 
-        <main className="flex-1 p-8 overflow-y-auto">
-          <h1 className="text-white text-4xl font-bold mb-8" >
+        <main className="flex-1 p-4 md:p-8 overflow-y-auto">
+          <div className="flex items-center gap-4 mb-6 md:hidden">
+            <button
+              onClick={() => setSidebarOpen(true)}
+              className="text-white bg-gray-800 p-2 rounded-lg"
+            >
+              <Menu size={24} />
+            </button>
+            <h1 className="text-white text-2xl font-bold">Profile Settings</h1>
+          </div>
+          <h1 className="text-white text-4xl font-bold mb-8 hidden md:block" >
             Profile Settings
           </h1>
 
           <div className="space-y-6">
-            <section className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-800">
-              <h2 className="text-cyan-400 text-2xl font-bold mb-6" >
+            <section className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-4 md:p-8 border border-gray-800">
+              <h2 className="text-cyan-400 text-xl md:text-2xl font-bold mb-6" >
                 Profile Information
               </h2>
 
               <div className="mb-6">
-                <div className="flex items-end gap-4 mb-6">
+                <div className="flex flex-col sm:flex-row items-start sm:items-end gap-4 mb-6">
                   <div className="relative">
                     <img
                       src="/assets/image copy copy.png"
@@ -137,8 +155,8 @@ export default function ProfileSettingsPage() {
               </button>
             </section>
 
-            <section className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-800">
-              <h2 className="text-cyan-400 text-2xl font-bold mb-4" >
+            <section className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-4 md:p-8 border border-gray-800">
+              <h2 className="text-cyan-400 text-xl md:text-2xl font-bold mb-4" >
                 External Connections
               </h2>
               <p className="text-gray-400 mb-6" >
@@ -146,7 +164,7 @@ export default function ProfileSettingsPage() {
               </p>
 
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 bg-gray-800/50 rounded-lg border border-gray-700">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-4 bg-gray-800/50 rounded-lg border border-gray-700">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold">
                       S
@@ -160,7 +178,7 @@ export default function ProfileSettingsPage() {
                   </button>
                 </div>
 
-                <div className="flex items-center justify-between p-4 bg-gray-800/50 rounded-lg border border-gray-700">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-4 bg-gray-800/50 rounded-lg border border-gray-700">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
                       G
@@ -174,7 +192,7 @@ export default function ProfileSettingsPage() {
                   </button>
                 </div>
 
-                <div className="flex items-center justify-between p-4 bg-gray-800/50 rounded-lg border border-gray-700">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-4 bg-gray-800/50 rounded-lg border border-gray-700">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center text-white font-bold">
                       Z
@@ -190,8 +208,8 @@ export default function ProfileSettingsPage() {
               </div>
             </section>
 
-            <section className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-800">
-              <h2 className="text-cyan-400 text-2xl font-bold mb-6" >
+            <section className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-4 md:p-8 border border-gray-800">
+              <h2 className="text-cyan-400 text-xl md:text-2xl font-bold mb-6" >
                 Preferences
               </h2>
 
