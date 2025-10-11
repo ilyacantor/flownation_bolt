@@ -59,7 +59,7 @@ export default function ProfileSettingsPage() {
                 <div className="flex items-end gap-4 mb-6">
                   <div className="relative">
                     <img
-                      src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=200"
+                      src="/assets/image copy copy.png"
                       alt="Profile"
                       className="w-24 h-24 rounded-full object-cover border-2 border-cyan-400/30"
                     />
@@ -82,7 +82,7 @@ export default function ProfileSettingsPage() {
                     </label>
                     <input
                       type="text"
-                      defaultValue="Jane Doe"
+                      defaultValue="Kiley Z."
                       className="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 transition-colors"
                       
                     />
@@ -94,7 +94,7 @@ export default function ProfileSettingsPage() {
                     </label>
                     <input
                       type="email"
-                      defaultValue="jane.doe@flow-nation.com"
+                      defaultValue="skyler@flow-nation.com"
                       className="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 transition-colors"
                       
                     />
@@ -106,7 +106,7 @@ export default function ProfileSettingsPage() {
                     </label>
                     <textarea
                       rows={4}
-                      defaultValue="Passionate endurance athlete, always looking for the next challenge. Love cycling, running, and exploring new trails. Member of the FlowNation community since 2022."
+                      defaultValue="Passionate athlete, always looking for next challenge. But also enjoy hanging with my new puppy."
                       className="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 transition-colors resize-none"
                       
                     />
@@ -117,7 +117,7 @@ export default function ProfileSettingsPage() {
                       Favorite Events/Sports
                     </label>
                     <div className="flex flex-wrap gap-2">
-                      {['Cycling', 'Triathlon', 'Marathon', 'Trail Running', 'Gravel'].map((sport) => (
+                      {['Cycling', 'Triathlon', 'Marathon', 'Trail Running', 'Gravel', 'Mountain Biking'].map((sport) => (
                         <span
                           key={sport}
                           className="px-4 py-2 bg-gray-800 text-gray-300 rounded-full text-sm"
