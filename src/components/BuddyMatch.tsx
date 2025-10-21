@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { mockRiders, demoUser } from "../data/mockRiders";
-import { getActiveMatches, getPassiveMatches } from "../utils/BuddyMatchEngine";
+import { useBuddyMatch } from "../hooks/useBuddyMatch";
 import RideBuddyCard from "./home/RideBuddyCard";
 import { Search, MapPin, Mountain, Target, Grid, MessageCircle } from "lucide-react";
 
@@ -9,32 +7,19 @@ interface BuddyMatchProps {
 }
 
 export default function BuddyMatch({ userId }: BuddyMatchProps) {
-  const user = userId ? mockRiders.find(r => r.id === userId) || demoUser : demoUser;
-  const [tab, setTab] = useState("active");
-  const [viewMode, setViewMode] = useState<"cards" | "grid">("cards");
-  const [visibleCount, setVisibleCount] = useState(50);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [locationFilter, setLocationFilter] = useState("");
-  const [rideTypeFilter, setRideTypeFilter] = useState("");
-  const [paceZoneFilter, setPaceZoneFilter] = useState("");
-  const matches = tab === "active" ? getActiveMatches(user) : getPassiveMatches(user);
-
-  const filteredMatches = matches.filter(match => {
-    const matchesSearch = !searchQuery || match.name.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesLocation = !locationFilter || match.city.toLowerCase().includes(locationFilter.toLowerCase());
-    const matchesRideType = !rideTypeFilter || match.rideType === rideTypeFilter;
-    const matchesPaceZone = !paceZoneFilter || match.paceZone.toString() === paceZoneFilter;
-    return matchesSearch && matchesLocation && matchesRideType && matchesPaceZone;
-  });
-
-  const handleTabChange = (newTab: string) => {
-    setTab(newTab);
-    setVisibleCount(50);
-  };
-
-  const loadMore = () => {
-    setVisibleCount(prev => prev + 50);
-  };
+  const {
+    tab,
+    viewMode,
+    visibleCount,
+    filters,
+    filteredMatches,
+    setViewMode,
+    handleTabChange,
+    loadMore,
+    updateFilter,
+    activeMatchCount,
+    passiveMatchCount,
+  } = useBuddyMatch(userId);
 
   const handleSendDM = (rider: any) => {
     console.log(`Sending DM to ${rider.name}`);
@@ -49,8 +34,8 @@ export default function BuddyMatch({ userId }: BuddyMatchProps) {
             <input
               type="text"
               placeholder="Search by name..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              value={filters.searchQuery}
+              onChange={(e) => updateFilter('searchQuery', e.target.value)}
               className="w-full pl-10 pr-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-500 transition-colors"
             />
           </div>
@@ -59,16 +44,16 @@ export default function BuddyMatch({ userId }: BuddyMatchProps) {
             <input
               type="text"
               placeholder="Filter by location..."
-              value={locationFilter}
-              onChange={(e) => setLocationFilter(e.target.value)}
+              value={filters.locationFilter}
+              onChange={(e) => updateFilter('locationFilter', e.target.value)}
               className="w-full pl-10 pr-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-500 transition-colors"
             />
           </div>
           <div className="relative">
             <Mountain className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
             <select
-              value={rideTypeFilter}
-              onChange={(e) => setRideTypeFilter(e.target.value)}
+              value={filters.rideTypeFilter}
+              onChange={(e) => updateFilter('rideTypeFilter', e.target.value)}
               className="w-full pl-10 pr-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-cyan-500 transition-colors appearance-none"
             >
               <option value="">All Ride Types</option>
@@ -80,8 +65,8 @@ export default function BuddyMatch({ userId }: BuddyMatchProps) {
           <div className="relative">
             <Target className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
             <select
-              value={paceZoneFilter}
-              onChange={(e) => setPaceZoneFilter(e.target.value)}
+              value={filters.paceZoneFilter}
+              onChange={(e) => updateFilter('paceZoneFilter', e.target.value)}
               className="w-full pl-10 pr-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-cyan-500 transition-colors appearance-none"
             >
               <option value="">All Pace Zones</option>
@@ -105,7 +90,7 @@ export default function BuddyMatch({ userId }: BuddyMatchProps) {
             }`}
             onClick={() => handleTabChange("active")}
           >
-            Active Search ({getActiveMatches(user).length})
+            Active Search ({activeMatchCount})
           </button>
           <button
             className={`px-6 py-2 rounded-lg text-sm font-semibold transition-all ${
@@ -115,7 +100,7 @@ export default function BuddyMatch({ userId }: BuddyMatchProps) {
             }`}
             onClick={() => handleTabChange("passive")}
           >
-            All Matches ({getPassiveMatches(user).length})
+            All Matches ({passiveMatchCount})
           </button>
         </div>
         <div className="flex gap-2">
