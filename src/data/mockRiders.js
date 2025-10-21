@@ -10,6 +10,8 @@ const cities = ["San Francisco", "Oakland", "San Jose", "Palo Alto", "Marin", "S
 const rideTypes = ["Road", "Gravel", "MTB", "Tri"];
 const socialPrefs = ["Social", "Focused", "Solo"];
 const expLevels = ["Novice", "Intermediate", "Advanced"];
+const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+const timesOfDay = ["Early Morning", "Morning", "Afternoon", "Evening"];
 
 const avatars = [
   "https://i.pravatar.cc/150?img=1",
@@ -42,6 +44,14 @@ function generateRider(index) {
   const lastActive = new Date();
   lastActive.setDate(lastActive.getDate() - daysAgo);
 
+  const hoursPerWeek = 3 + Math.floor(Math.random() * 15);
+
+  const numPreferredDays = 2 + Math.floor(Math.random() * 4);
+  const shuffledDays = [...daysOfWeek].sort(() => Math.random() - 0.5);
+  const preferredDays = shuffledDays.slice(0, numPreferredDays);
+
+  const preferredTimeOfDay = timesOfDay[Math.floor(Math.random() * timesOfDay.length)];
+
   return {
     id: `rider-${index + 1}`,
     name: `${firstName} ${lastName}`,
@@ -55,7 +65,10 @@ function generateRider(index) {
     expLevel: expLevels[Math.floor(Math.random() * expLevels.length)],
     activeSearch: Math.random() < 0.4,
     lastActive: lastActive.toISOString(),
-    avatar: avatars[Math.floor(Math.random() * avatars.length)]
+    avatar: avatars[Math.floor(Math.random() * avatars.length)],
+    hoursPerWeek,
+    preferredDays,
+    preferredTimeOfDay
   };
 }
 
@@ -74,5 +87,8 @@ export const demoUser = {
   expLevel: "Intermediate",
   activeSearch: true,
   lastActive: new Date().toISOString(),
-  avatar: "https://i.pravatar.cc/150?img=33"
+  avatar: "https://i.pravatar.cc/150?img=33",
+  hoursPerWeek: 8,
+  preferredDays: ["Saturday", "Sunday", "Wednesday"],
+  preferredTimeOfDay: "Morning"
 };
