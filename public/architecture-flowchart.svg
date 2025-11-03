@@ -1,0 +1,377 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1800">
+  <defs>
+    <style>
+      .box { fill: #f0f9ff; stroke: #0284c7; stroke-width: 2; }
+      .db-box { fill: #f0fdf4; stroke: #16a34a; stroke-width: 2; }
+      .service-box { fill: #fef3c7; stroke: #f59e0b; stroke-width: 2; }
+      .component-box { fill: #fce7f3; stroke: #db2777; stroke-width: 2; }
+      .page-box { fill: #ede9fe; stroke: #7c3aed; stroke-width: 2; }
+      .text { font-family: Arial, sans-serif; font-size: 14px; fill: #1f2937; }
+      .title { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #1f2937; }
+      .subtitle { font-family: Arial, sans-serif; font-size: 12px; fill: #6b7280; }
+      .arrow { stroke: #64748b; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .arrow-db { stroke: #16a34a; stroke-width: 2; fill: none; marker-end: url(#arrowhead-db); }
+      .section-title { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; fill: #0f172a; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#64748b" />
+    </marker>
+    <marker id="arrowhead-db" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#16a34a" />
+    </marker>
+  </defs>
+
+  <text x="700" y="30" text-anchor="middle" class="section-title">FlowBike Application Architecture</text>
+
+  <!-- Entry Point -->
+  <rect x="600" y="60" width="200" height="60" rx="5" class="box"/>
+  <text x="700" y="85" text-anchor="middle" class="title">Entry Point</text>
+  <text x="700" y="105" text-anchor="middle" class="subtitle">main.tsx + Vite</text>
+
+  <!-- Core App Layer -->
+  <rect x="600" y="160" width="200" height="80" rx="5" class="box"/>
+  <text x="700" y="190" text-anchor="middle" class="title">App.tsx</text>
+  <text x="700" y="210" text-anchor="middle" class="subtitle">React Router DOM</text>
+  <text x="700" y="225" text-anchor="middle" class="subtitle">Route Configuration</text>
+
+  <!-- Auth Context -->
+  <rect x="350" y="170" width="180" height="60" rx="5" class="service-box"/>
+  <text x="440" y="195" text-anchor="middle" class="title">AuthContext</text>
+  <text x="440" y="215" text-anchor="middle" class="subtitle">User State Management</text>
+
+  <!-- Supabase -->
+  <rect x="150" y="170" width="150" height="60" rx="5" class="db-box"/>
+  <text x="225" y="195" text-anchor="middle" class="title">Supabase</text>
+  <text x="225" y="215" text-anchor="middle" class="subtitle">Backend & Database</text>
+
+  <!-- Pages Section -->
+  <text x="700" y="290" text-anchor="middle" class="section-title">Pages Layer</text>
+
+  <!-- Landing & Solutions -->
+  <rect x="50" y="320" width="180" height="80" rx="5" class="page-box"/>
+  <text x="140" y="345" text-anchor="middle" class="title">Marketing Pages</text>
+  <text x="140" y="365" text-anchor="middle" class="subtitle">LandingPage</text>
+  <text x="140" y="380" text-anchor="middle" class="subtitle">SolutionsPage</text>
+  <text x="140" y="395" text-anchor="middle" class="subtitle">*LandingPages</text>
+
+  <!-- Persona Pages -->
+  <rect x="260" y="320" width="180" height="80" rx="5" class="page-box"/>
+  <text x="350" y="345" text-anchor="middle" class="title">Persona Pages</text>
+  <text x="350" y="365" text-anchor="middle" class="subtitle">RoadiePage</text>
+  <text x="350" y="380" text-anchor="middle" class="subtitle">MTBearPage</text>
+  <text x="350" y="395" text-anchor="middle" class="subtitle">+3 more personas</text>
+
+  <!-- Core Feature Pages -->
+  <rect x="470" y="320" width="180" height="80" rx="5" class="page-box"/>
+  <text x="560" y="345" text-anchor="middle" class="title">Core Features</text>
+  <text x="560" y="365" text-anchor="middle" class="subtitle">PaddockPage</text>
+  <text x="560" y="380" text-anchor="middle" class="subtitle">FlowHubPage</text>
+  <text x="560" y="395" text-anchor="middle" class="subtitle">TeamFlowPage</text>
+
+  <!-- Discovery & Social -->
+  <rect x="680" y="320" width="180" height="80" rx="5" class="page-box"/>
+  <text x="770" y="345" text-anchor="middle" class="title">Discovery & Social</text>
+  <text x="770" y="365" text-anchor="middle" class="subtitle">BuddyMatchPage</text>
+  <text x="770" y="380" text-anchor="middle" class="subtitle">EventDiscoveryPage</text>
+  <text x="770" y="395" text-anchor="middle" class="subtitle">BikeShopPage</text>
+
+  <!-- User Management -->
+  <rect x="890" y="320" width="180" height="80" rx="5" class="page-box"/>
+  <text x="980" y="345" text-anchor="middle" class="title">User & Tools</text>
+  <text x="980" y="365" text-anchor="middle" class="subtitle">ProfileSettingsPage</text>
+  <text x="980" y="380" text-anchor="middle" class="subtitle">CoachesCornerPage</text>
+  <text x="980" y="395" text-anchor="middle" class="subtitle">ToolsPage</text>
+
+  <!-- Components Section -->
+  <text x="700" y="460" text-anchor="middle" class="section-title">Components Layer</text>
+
+  <!-- Layout Components -->
+  <rect x="50" y="490" width="180" height="100" rx="5" class="component-box"/>
+  <text x="140" y="515" text-anchor="middle" class="title">Layout</text>
+  <text x="140" y="535" text-anchor="middle" class="subtitle">Header</text>
+  <text x="140" y="550" text-anchor="middle" class="subtitle">Footer</text>
+  <text x="140" y="565" text-anchor="middle" class="subtitle">Navigation (Guest/Reg)</text>
+  <text x="140" y="580" text-anchor="middle" class="subtitle">MobileNav</text>
+
+  <!-- Hero & Landing -->
+  <rect x="260" y="490" width="180" height="100" rx="5" class="component-box"/>
+  <text x="350" y="515" text-anchor="middle" class="title">Hero & Landing</text>
+  <text x="350" y="535" text-anchor="middle" class="subtitle">HeroSection</text>
+  <text x="350" y="550" text-anchor="middle" class="subtitle">HeroVideoPlayer</text>
+  <text x="350" y="565" text-anchor="middle" class="subtitle">TypeSection</text>
+  <text x="350" y="580" text-anchor="middle" class="subtitle">TeaserCard</text>
+
+  <!-- FlowHub Components -->
+  <rect x="470" y="490" width="180" height="100" rx="5" class="component-box"/>
+  <text x="560" y="515" text-anchor="middle" class="title">FlowHub</text>
+  <text x="560" y="535" text-anchor="middle" class="subtitle">ActivityFeed</text>
+  <text x="560" y="550" text-anchor="middle" class="subtitle">CalendarWidget</text>
+  <text x="560" y="565" text-anchor="middle" class="subtitle">GearLocker</text>
+  <text x="560" y="580" text-anchor="middle" class="subtitle">+3 more</text>
+
+  <!-- Paddock Components -->
+  <rect x="680" y="490" width="180" height="100" rx="5" class="component-box"/>
+  <text x="770" y="515" text-anchor="middle" class="title">Paddock</text>
+  <text x="770" y="535" text-anchor="middle" class="subtitle">ActiveMatches</text>
+  <text x="770" y="550" text-anchor="middle" class="subtitle">EventFlow</text>
+  <text x="770" y="565" text-anchor="middle" class="subtitle">FlowBuzz</text>
+  <text x="770" y="580" text-anchor="middle" class="subtitle">YourNextRide</text>
+
+  <!-- Buddy Match -->
+  <rect x="890" y="490" width="180" height="100" rx="5" class="component-box"/>
+  <text x="980" y="515" text-anchor="middle" class="title">Social & Match</text>
+  <text x="980" y="535" text-anchor="middle" class="subtitle">BuddyMatch</text>
+  <text x="980" y="550" text-anchor="middle" class="subtitle">BuddyFinderBox</text>
+  <text x="980" y="565" text-anchor="middle" class="subtitle">SwipeableCard</text>
+  <text x="980" y="580" text-anchor="middle" class="subtitle">InteractiveMap</text>
+
+  <!-- Interactive Elements -->
+  <rect x="1100" y="490" width="180" height="100" rx="5" class="component-box"/>
+  <text x="1190" y="515" text-anchor="middle" class="title">Interactive</text>
+  <text x="1190" y="535" text-anchor="middle" class="subtitle">FlowbieBot</text>
+  <text x="1190" y="550" text-anchor="middle" class="subtitle">FlowbieMini</text>
+  <text x="1190" y="565" text-anchor="middle" class="subtitle">FloatingFlowbie</text>
+  <text x="1190" y="580" text-anchor="middle" class="subtitle">QuickSignupModal</text>
+
+  <!-- Data & Utils Layer -->
+  <text x="700" y="650" text-anchor="middle" class="section-title">Data & Utils Layer</text>
+
+  <!-- Mock Data -->
+  <rect x="100" y="680" width="200" height="100" rx="5" class="service-box"/>
+  <text x="200" y="705" text-anchor="middle" class="title">Mock Data</text>
+  <text x="200" y="725" text-anchor="middle" class="subtitle">flowhub_* (6 files)</text>
+  <text x="200" y="740" text-anchor="middle" class="subtitle">paddock_* (4 files)</text>
+  <text x="200" y="755" text-anchor="middle" class="subtitle">mockRiders.json</text>
+  <text x="200" y="770" text-anchor="middle" class="subtitle">bikeShops.ts</text>
+
+  <!-- Utils & Engines -->
+  <rect x="330" y="680" width="200" height="100" rx="5" class="service-box"/>
+  <text x="430" y="705" text-anchor="middle" class="title">Utils & Engines</text>
+  <text x="430" y="725" text-anchor="middle" class="subtitle">BuddyMatchEngine</text>
+  <text x="430" y="740" text-anchor="middle" class="subtitle">useBuddyMatch hook</text>
+  <text x="430" y="755" text-anchor="middle" class="subtitle">mockData.js</text>
+  <text x="430" y="770" text-anchor="middle" class="subtitle">mockTeams.ts</text>
+
+  <!-- External Integrations -->
+  <rect x="560" y="680" width="200" height="100" rx="5" class="service-box"/>
+  <text x="660" y="705" text-anchor="middle" class="title">External Libraries</text>
+  <text x="660" y="725" text-anchor="middle" class="subtitle">Leaflet Maps</text>
+  <text x="660" y="740" text-anchor="middle" class="subtitle">React Spring</text>
+  <text x="660" y="755" text-anchor="middle" class="subtitle">React Tinder Card</text>
+  <text x="660" y="770" text-anchor="middle" class="subtitle">Lucide Icons</text>
+
+  <!-- Static Assets -->
+  <rect x="790" y="680" width="200" height="100" rx="5" class="service-box"/>
+  <text x="890" y="705" text-anchor="middle" class="title">Static Assets</text>
+  <text x="890" y="725" text-anchor="middle" class="subtitle">Flowbie videos/images</text>
+  <text x="890" y="740" text-anchor="middle" class="subtitle">Sport icons</text>
+  <text x="890" y="755" text-anchor="middle" class="subtitle">Hero images</text>
+  <text x="890" y="770" text-anchor="middle" class="subtitle">JSON data files</text>
+
+  <!-- Technology Stack -->
+  <text x="700" y="840" text-anchor="middle" class="section-title">Technology Stack</text>
+
+  <!-- Frontend Tech -->
+  <rect x="150" y="870" width="220" height="120" rx="5" class="box"/>
+  <text x="260" y="895" text-anchor="middle" class="title">Frontend</text>
+  <text x="260" y="915" text-anchor="middle" class="subtitle">React 18 + TypeScript</text>
+  <text x="260" y="930" text-anchor="middle" class="subtitle">Vite (Build Tool)</text>
+  <text x="260" y="945" text-anchor="middle" class="subtitle">Tailwind CSS</text>
+  <text x="260" y="960" text-anchor="middle" class="subtitle">React Router DOM v7</text>
+  <text x="260" y="975" text-anchor="middle" class="subtitle">ESLint</text>
+
+  <!-- State & Data -->
+  <rect x="400" y="870" width="220" height="120" rx="5" class="box"/>
+  <text x="510" y="895" text-anchor="middle" class="title">State & Data</text>
+  <text x="510" y="915" text-anchor="middle" class="subtitle">Context API (Auth)</text>
+  <text x="510" y="930" text-anchor="middle" class="subtitle">LocalStorage</text>
+  <text x="510" y="945" text-anchor="middle" class="subtitle">Mock Data (JSON)</text>
+  <text x="510" y="960" text-anchor="middle" class="subtitle">Custom Hooks</text>
+  <text x="510" y="975" text-anchor="middle" class="subtitle">Supabase Client</text>
+
+  <!-- Backend & Services -->
+  <rect x="650" y="870" width="220" height="120" rx="5" class="db-box"/>
+  <text x="760" y="895" text-anchor="middle" class="title">Backend & Services</text>
+  <text x="760" y="915" text-anchor="middle" class="subtitle">Supabase (Database)</text>
+  <text x="760" y="930" text-anchor="middle" class="subtitle">Supabase Auth</text>
+  <text x="760" y="945" text-anchor="middle" class="subtitle">RESTful API</text>
+  <text x="760" y="960" text-anchor="middle" class="subtitle">Edge Functions</text>
+  <text x="760" y="975" text-anchor="middle" class="subtitle">Row Level Security</text>
+
+  <!-- UI & Animation -->
+  <rect x="900" y="870" width="220" height="120" rx="5" class="box"/>
+  <text x="1010" y="895" text-anchor="middle" class="title">UI & Animation</text>
+  <text x="1010" y="915" text-anchor="middle" class="subtitle">React Spring</text>
+  <text x="1010" y="930" text-anchor="middle" class="subtitle">Lucide React Icons</text>
+  <text x="1010" y="945" text-anchor="middle" class="subtitle">React Tinder Card</text>
+  <text x="1010" y="960" text-anchor="middle" class="subtitle">Leaflet Maps</text>
+  <text x="1010" y="975" text-anchor="middle" class="subtitle">Responsive Design</text>
+
+  <!-- Data Flow Section -->
+  <text x="700" y="1050" text-anchor="middle" class="section-title">Data Flow & Architecture Patterns</text>
+
+  <!-- User Interaction -->
+  <rect x="50" y="1080" width="180" height="80" rx="5" class="box"/>
+  <text x="140" y="1105" text-anchor="middle" class="title">User Interaction</text>
+  <text x="140" y="1125" text-anchor="middle" class="subtitle">Browser Events</text>
+  <text x="140" y="1140" text-anchor="middle" class="subtitle">Form Inputs</text>
+  <text x="140" y="1155" text-anchor="middle" class="subtitle">Navigation</text>
+
+  <!-- Component State -->
+  <rect x="270" y="1080" width="180" height="80" rx="5" class="component-box"/>
+  <text x="360" y="1105" text-anchor="middle" class="title">Component State</text>
+  <text x="360" y="1125" text-anchor="middle" class="subtitle">React useState</text>
+  <text x="360" y="1140" text-anchor="middle" class="subtitle">useEffect hooks</text>
+  <text x="360" y="1155" text-anchor="middle" class="subtitle">Custom hooks</text>
+
+  <!-- Context/Global State -->
+  <rect x="490" y="1080" width="180" height="80" rx="5" class="service-box"/>
+  <text x="580" y="1105" text-anchor="middle" class="title">Global State</text>
+  <text x="580" y="1125" text-anchor="middle" class="subtitle">AuthContext</text>
+  <text x="580" y="1140" text-anchor="middle" class="subtitle">LocalStorage</text>
+  <text x="580" y="1155" text-anchor="middle" class="subtitle">Session State</text>
+
+  <!-- API Layer -->
+  <rect x="710" y="1080" width="180" height="80" rx="5" class="service-box"/>
+  <text x="800" y="1105" text-anchor="middle" class="title">API Layer</text>
+  <text x="800" y="1125" text-anchor="middle" class="subtitle">Supabase Client</text>
+  <text x="800" y="1140" text-anchor="middle" class="subtitle">Mock Data APIs</text>
+  <text x="800" y="1155" text-anchor="middle" class="subtitle">Async Operations</text>
+
+  <!-- Backend/Database -->
+  <rect x="930" y="1080" width="180" height="80" rx="5" class="db-box"/>
+  <text x="1020" y="1105" text-anchor="middle" class="title">Backend/DB</text>
+  <text x="1020" y="1125" text-anchor="middle" class="subtitle">Supabase Postgres</text>
+  <text x="1020" y="1140" text-anchor="middle" class="subtitle">Edge Functions</text>
+  <text x="1020" y="1155" text-anchor="middle" class="subtitle">Real-time Updates</text>
+
+  <!-- Key Features Section -->
+  <text x="700" y="1230" text-anchor="middle" class="section-title">Key Features & Modules</text>
+
+  <!-- Feature 1 -->
+  <rect x="50" y="1260" width="250" height="90" rx="5" class="page-box"/>
+  <text x="175" y="1285" text-anchor="middle" class="title">Buddy Matching System</text>
+  <text x="175" y="1305" text-anchor="middle" class="subtitle">Tinder-style swipe interface</text>
+  <text x="175" y="1320" text-anchor="middle" class="subtitle">Matching algorithm engine</text>
+  <text x="175" y="1335" text-anchor="middle" class="subtitle">Profile compatibility scoring</text>
+
+  <!-- Feature 2 -->
+  <rect x="325" y="1260" width="250" height="90" rx="5" class="page-box"/>
+  <text x="450" y="1285" text-anchor="middle" class="title">Paddock (Social Hub)</text>
+  <text x="450" y="1305" text-anchor="middle" class="subtitle">Active matches management</text>
+  <text x="450" y="1320" text-anchor="middle" class="subtitle">Event coordination</text>
+  <text x="450" y="1335" text-anchor="middle" class="subtitle">Community buzz feed</text>
+
+  <!-- Feature 3 -->
+  <rect x="600" y="1260" width="250" height="90" rx="5" class="page-box"/>
+  <text x="725" y="1285" text-anchor="middle" class="title">FlowHub (Dashboard)</text>
+  <text x="725" y="1305" text-anchor="middle" class="subtitle">Activity tracking & feed</text>
+  <text x="725" y="1320" text-anchor="middle" class="subtitle">Performance metrics</text>
+  <text x="725" y="1335" text-anchor="middle" class="subtitle">Gear management</text>
+
+  <!-- Feature 4 -->
+  <rect x="875" y="1260" width="250" height="90" rx="5" class="page-box"/>
+  <text x="1000" y="1285" text-anchor="middle" class="title">Persona Experiences</text>
+  <text x="1000" y="1305" text-anchor="middle" class="subtitle">Sport-specific content</text>
+  <text x="1000" y="1320" text-anchor="middle" class="subtitle">Tailored integrations</text>
+  <text x="1000" y="1335" text-anchor="middle" class="subtitle">Custom gear reviews</text>
+
+  <!-- Feature 5 -->
+  <rect x="50" y="1380" width="250" height="90" rx="5" class="page-box"/>
+  <text x="175" y="1405" text-anchor="middle" class="title">Event Discovery</text>
+  <text x="175" y="1425" text-anchor="middle" class="subtitle">Interactive maps (Leaflet)</text>
+  <text x="175" y="1440" text-anchor="middle" class="subtitle">Event browsing & filtering</text>
+  <text x="175" y="1455" text-anchor="middle" class="subtitle">Location-based search</text>
+
+  <!-- Feature 6 -->
+  <rect x="325" y="1380" width="250" height="90" rx="5" class="page-box"/>
+  <text x="450" y="1405" text-anchor="middle" class="title">Team Management</text>
+  <text x="450" y="1425" text-anchor="middle" class="subtitle">TeamFlow collaboration</text>
+  <text x="450" y="1440" text-anchor="middle" class="subtitle">Coach's corner</text>
+  <text x="450" y="1455" text-anchor="middle" class="subtitle">Team director tools</text>
+
+  <!-- Feature 7 -->
+  <rect x="600" y="1380" width="250" height="90" rx="5" class="page-box"/>
+  <text x="725" y="1405" text-anchor="middle" class="title">LBS Integration</text>
+  <text x="725" y="1425" text-anchor="middle" class="subtitle">Bike shop discovery</text>
+  <text x="725" y="1440" text-anchor="middle" class="subtitle">Service booking</text>
+  <text x="725" y="1455" text-anchor="middle" class="subtitle">Shop partnerships</text>
+
+  <!-- Feature 8 -->
+  <rect x="875" y="1380" width="250" height="90" rx="5" class="page-box"/>
+  <text x="1000" y="1405" text-anchor="middle" class="title">Flowbie AI Assistant</text>
+  <text x="1000" y="1425" text-anchor="middle" class="subtitle">Interactive chatbot</text>
+  <text x="1000" y="1440" text-anchor="middle" class="subtitle">Context-aware help</text>
+  <text x="1000" y="1455" text-anchor="middle" class="subtitle">Multiple UI states</text>
+
+  <!-- User Journey Flow -->
+  <text x="700" y="1540" text-anchor="middle" class="section-title">User Journey Flow</text>
+
+  <rect x="100" y="1570" width="150" height="50" rx="5" class="box"/>
+  <text x="175" y="1600" text-anchor="middle" class="text">Landing Page</text>
+
+  <rect x="290" y="1570" width="150" height="50" rx="5" class="box"/>
+  <text x="365" y="1600" text-anchor="middle" class="text">Persona Selection</text>
+
+  <rect x="480" y="1570" width="150" height="50" rx="5" class="service-box"/>
+  <text x="555" y="1600" text-anchor="middle" class="text">Auth/Register</text>
+
+  <rect x="670" y="1570" width="150" height="50" rx="5" class="page-box"/>
+  <text x="745" y="1600" text-anchor="middle" class="text">FlowHub</text>
+
+  <rect x="340" y="1650" width="150" height="50" rx="5" class="page-box"/>
+  <text x="415" y="1680" text-anchor="middle" class="text">Buddy Match</text>
+
+  <rect x="530" y="1650" width="150" height="50" rx="5" class="page-box"/>
+  <text x="605" y="1680" text-anchor="middle" class="text">Paddock</text>
+
+  <rect x="720" y="1650" width="150" height="50" rx="5" class="page-box"/>
+  <text x="795" y="1680" text-anchor="middle" class="text">Events</text>
+
+  <rect x="910" y="1650" width="150" height="50" rx="5" class="page-box"/>
+  <text x="985" y="1680" text-anchor="middle" class="text">Team Features</text>
+
+  <!-- Flow Arrows -->
+  <path d="M 250 1595 L 290 1595" class="arrow"/>
+  <path d="M 440 1595 L 480 1595" class="arrow"/>
+  <path d="M 630 1595 L 670 1595" class="arrow"/>
+
+  <path d="M 745 1620 L 745 1640 L 415 1640 L 415 1650" class="arrow"/>
+  <path d="M 745 1620 L 745 1640 L 605 1640 L 605 1650" class="arrow"/>
+  <path d="M 745 1620 L 745 1640 L 795 1640 L 795 1650" class="arrow"/>
+  <path d="M 745 1620 L 745 1640 L 985 1640 L 985 1650" class="arrow"/>
+
+  <!-- Main connection arrows -->
+  <path d="M 700 120 L 700 160" class="arrow"/>
+  <path d="M 700 240 L 700 320" class="arrow"/>
+  <path d="M 600 200 L 530 200" class="arrow"/>
+  <path d="M 350 200 L 300 200" class="arrow-db"/>
+
+  <path d="M 140 400 L 140 490" class="arrow"/>
+  <path d="M 350 400 L 350 490" class="arrow"/>
+  <path d="M 560 400 L 560 490" class="arrow"/>
+  <path d="M 770 400 L 770 490" class="arrow"/>
+  <path d="M 980 400 L 980 490" class="arrow"/>
+
+  <path d="M 200 780 L 360 870" class="arrow"/>
+  <path d="M 430 780 L 510 870" class="arrow"/>
+  <path d="M 660 780 L 760 870" class="arrow"/>
+  <path d="M 140 1160 L 270 1080" class="arrow"/>
+  <path d="M 360 1080 L 490 1080" class="arrow"/>
+  <path d="M 580 1080 L 710 1080" class="arrow"/>
+  <path d="M 800 1080 L 930 1080" class="arrow-db"/>
+
+  <!-- Legend -->
+  <text x="50" y="1760" class="text" font-weight="bold">Legend:</text>
+  <rect x="50" y="1770" width="30" height="20" class="box"/>
+  <text x="90" y="1785" class="subtitle">Core/Entry</text>
+  <rect x="180" y="1770" width="30" height="20" class="page-box"/>
+  <text x="220" y="1785" class="subtitle">Pages</text>
+  <rect x="290" y="1770" width="30" height="20" class="component-box"/>
+  <text x="330" y="1785" class="subtitle">Components</text>
+  <rect x="430" y="1770" width="30" height="20" class="service-box"/>
+  <text x="470" y="1785" class="subtitle">Services/Utils</text>
+  <rect x="580" y="1770" width="30" height="20" class="db-box"/>
+  <text x="620" y="1785" class="subtitle">Database/Backend</text>
+
+</svg>
